@@ -1,6 +1,8 @@
 gunicorn==19.0.0
 Keras==2.0.4
-Anaconda==4.4.0
+anaconda-client==1.6.3
+anaconda-navigator==1.5.2
+anaconda-project==0.4.1
 pymongo==3.3.0
 Flask_RESTful==0.3.6
 pandas==0.19.2
@@ -14,3 +16,4 @@ boto==2.47.0
 beautifulsoup4==4.6.0
 pickleshare==0.7.4
 cloudpickle==0.2.2
+pandas==0.19.2
