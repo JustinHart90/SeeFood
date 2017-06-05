@@ -12,3 +12,5 @@ numpy==1.12.1
 Pillow==4.1.1
 boto==2.47.0
 beautifulsoup4==4.6.0
+pickleshare==0.7.4
+cloudpickle==0.2.2
