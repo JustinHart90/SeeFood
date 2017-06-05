@@ -10,4 +10,9 @@ I will be training the neural nets by not touching any of the hyperparameters an
 
 
 References:
+
+Project:
 http://dl.acm.org/citation.cfm?id=2654970
+
+Evolution Theory:
+https://arxiv.org/abs/1703.01041
