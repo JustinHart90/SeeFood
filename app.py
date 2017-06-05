@@ -10,6 +10,7 @@ from pymongo import MongoClient
 
 
 app = Flask(__name__,  template_folder='templates')
+app.config['DEBUG'] = True
 global logged_In
 logged_In = False
 global username
