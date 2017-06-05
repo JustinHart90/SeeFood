@@ -75,14 +75,14 @@ def api():
         if key == '89477':
             nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
             name = random.choice(nameList)
-            df = pd.read_pickle('data/'+name+'.pickle')
-            entry = random.sample(df, 1)
-            index = entry[0]['key']
-            cals = entry[0]['calories']
-            tn = entry[0]['totalNutrients']
-            data = {'index' : index, 'calories' : cals, 'totalNutrients': tn }
-            x = {'key': str(key), 'response': data }
-            response = json.dumps(x, ensure_ascii=False)
+            # df = pd.read_pickle('data/'+name+'.pickle')
+            # entry = random.sample(df, 1)
+            # index = entry[0]['key']
+            # cals = entry[0]['calories']
+            # tn = entry[0]['totalNutrients']
+            # data = {'index' : index, 'calories' : cals, 'totalNutrients': tn }
+            # x = {'key': str(key), 'response': data }
+            # response = json.dumps(x, ensure_ascii=False)
             #nice
             return render_template('api.html', data = response )
         else:
@@ -126,4 +126,4 @@ def singout():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8105)
+    app.run(host='0.0.0.0', port=8105, debug=True)
