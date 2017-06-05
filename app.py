@@ -82,6 +82,7 @@ def api():
             data = {'index' : index, 'calories' : cals, 'totalNutrients': tn }
             x = {'key': str(key), 'response': data }
             response = json.dumps(x, ensure_ascii=False)
+            #nice
             return render_template('api.html', data = response )
         else:
             return render_template('api_error.html' )
