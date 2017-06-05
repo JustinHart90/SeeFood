@@ -2,9 +2,9 @@
 import pandas as pd
 
 def main():
-    d = pd.read_pickle("../data/chicken.pickle")
+    d = pd.read_pickle("../data/tacos.pickle")
     df = pd.DataFrame(d)
-    print(df.columns)
+    return (df.columns)
 
 if __name__ == '__main__':
-    main()
+    x = main()

@@ -22,22 +22,24 @@ def request():
     app = str(os.environ.get("EDAM_APP"))
     api = str(os.environ.get("EDAM_KEY"))
 
-    name = 'chicken'
+    nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
     write_out = []
 
-    for i in range(1,3):
-        start = 1 + (100 * (i-1) )
-        stop = 100 + (100 * (i-1) )
-        url = 'https://api.edamam.com/search?q='+name+'&app_id=' + app + '&app_key=' + api + '&from='+ str(start) +'&to='+str(stop)
-            # payload = {'app_id': str(os.environ.get("EDAM_APP")), 'app_key': str(os.environ.get("EDAM_KEY"))}
-        with urllib.request.urlopen(url) as url:
-                data = url.read()
-                fdata = json.loads(data)
-                print(len(fdata['hits']))
-                if len(fdata['hits']) > 0:
-                    for i,y in enumerate(fdata['hits']):
-                        write_out.append({'label' : fdata['hits'][i]['recipe']['label'],'image_url' : fdata['hits'][i]['recipe']['image'], 'calories' : fdata['hits'][i]['recipe']['calories'], 'totalNutrients' : fdata['hits'][i]['recipe']['totalNutrients']})
-    pickle.dump( write_out, open( '../data/'+name+ ".pickle", "wb" ) )
+    for name in nameList:
+        for i in range(1,2):
+            start = 1 + (100 * (i-1) )
+            stop = 100 + (100 * (i-1) )
+            url = 'https://api.edamam.com/search?q='+name+'&app_id=' + app + '&app_key=' + api + '&from='+ str(start) +'&to='+str(stop)
+                # payload = {'app_id': str(os.environ.get("EDAM_APP")), 'app_key': str(os.environ.get("EDAM_KEY"))}
+            print(url)
+            with urllib.request.urlopen(url) as url:
+                    data = url.read()
+                    fdata = json.loads(data)
+                    print(len(fdata['hits']))
+                    if len(fdata['hits']) > 0:
+                        for i,y in enumerate(fdata['hits']):
+                            write_out.append({'key': i, 'label' : fdata['hits'][i]['recipe']['label'],'image_url' : fdata['hits'][i]['recipe']['image'], 'calories' : fdata['hits'][i]['recipe']['calories'], 'totalNutrients' : fdata['hits'][i]['recipe']['totalNutrients']})
+        pickle.dump( write_out, open( '../data/'+name+ ".pickle", "wb" ) )
 
 
 
