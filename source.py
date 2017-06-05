@@ -9,7 +9,7 @@ from flask_restful import Resource, Api
 from pymongo import MongoClient
 
 
-app = Flask(__name__,  template_folder='templates')
+app = Flask(__name__)
 global logged_In
 logged_In = False
 global username
@@ -74,7 +74,7 @@ def api():
         if key == '89477':
             nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
             name = random.choice(nameList)
-            df = pd.read_pickle('data/'+name+'.pickle')
+            df = pd.read_pickle('../data/'+name+'.pickle')
             entry = random.sample(df, 1)
             index = entry[0]['key']
             cals = entry[0]['calories']
