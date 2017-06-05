@@ -1,5 +1,6 @@
 gunicorn==19.0.0
 Keras==2.0.4
+Anaconda==4.4.0
 pymongo==3.3.0
 Flask_RESTful==0.3.6
 pandas==0.19.2
