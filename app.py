@@ -78,12 +78,12 @@ def api():
             name = np.random.choice(nameList, 1)
             df = pd.read_pickle('data/tacos.pickle')
             entry = df[random.randint(0,9)]
-            index = entry['key']
-            cals = entry['calories']
-            tn = entry['totalNutrients']
-            data = {'index' : index, 'calories' : cals, 'totalNutrients': tn }
-            x = {'key': str(key), 'response': data }
-            response = json.dumps(x, ensure_ascii=False)
+            # index = entry['key']
+            # cals = entry['calories']
+            # tn = entry['totalNutrients']
+            # data = {'index' : index, 'calories' : cals, 'totalNutrients': tn }
+            # x = {'key': str(key), 'response': data }
+            # response = json.dumps(x, ensure_ascii=False)
             # #nice
 
             return render_template('api.html', data = entry )
