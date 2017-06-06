@@ -74,12 +74,7 @@ def api():
         key = request.args.get("key")
         print(key)
         if key == '89477':
-
-
-            rando = [{'calories': 3777.3231101292263,
- 'image_url': 'https://www.edamam.com/web-img/b6d/b6da6e61ae1e9e4c6d0dec0a06b2e0c5.jpg',
- 'key': 0,
- 'label': "Uncle Ray's Crawfish Tacos",
+            rando = [{'calories': 3777.3231101292263,'image_url': 'https://www.edamam.com/web-img/b6d/b6da6e61ae1e9e4c6d0dec0a06b2e0c5.jpg','key': 0,'label': "Uncle Ray's Crawfish Tacos",
  'totalNutrients': {'CA': {'label': 'Calcium',
    'quantity': 2645.8104272238634,
    'unit': 'mg'},
