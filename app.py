@@ -1,4 +1,6 @@
-import pandas as pd
+
+
+
 import requests, json
 import random
 import numpy as np
@@ -76,7 +78,11 @@ def api():
         if key == '89477':
             nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
             name = np.random.choice(nameList, 1)
-            df = pd.read_pickle('data/tacos.pickle')
+            try:
+                import pandas as pd
+            except ImportError:
+                return render_template('api_error.html' )
+            # df = pd.read_pickle('data/tacos.pickle')
             # entry = df[random.randint(0,9)]
             # index = entry['key']
             # cals = entry['calories']
