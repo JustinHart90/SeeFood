@@ -1,6 +1,7 @@
 import pandas as pd
 import requests, json
 import random
+import numpy as np
 import os
 import sys
 import pickle
@@ -74,15 +75,15 @@ def api():
         print(key)
         if key == '89477':
             nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
-            name = random.choice(nameList)
-            # df = pd.read_pickle('data/tacos.pickle')
-            # entry = random.sample(df, 1)
-            # index = entry[0]['key']
-            # cals = entry[0]['calories']
-            # tn = entry[0]['totalNutrients']
-            # data = {'index' : index, 'calories' : cals, 'totalNutrients': tn }
-            # x = {'key': str(key), 'response': data }
-            # response = json.dumps(x, ensure_ascii=False)
+            name = np.random.choice(nameList, 1)
+            df = pd.read_pickle('data/tacos.pickle')
+            entry = random.sample(df, 1)
+            index = entry[0]['key']
+            cals = entry[0]['calories']
+            tn = entry[0]['totalNutrients']
+            data = {'index' : index, 'calories' : cals, 'totalNutrients': tn }
+            x = {'key': str(key), 'response': data }
+            response = json.dumps(x, ensure_ascii=False)
             # #nice
 
             return render_template('api.html', data = entry )
