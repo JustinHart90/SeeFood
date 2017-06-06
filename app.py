@@ -11,14 +11,33 @@ from flask import Flask, render_template, request, redirect
 from flask_restful import Resource, Api
 from pymongo import MongoClient
 
-
-app = Flask(__name__,  template_folder='templates')
-app.config['DEBUG'] = True
-global logged_In
-logged_In = False
-global username
-username = ''
-
+def main():
+    mongo_url = os.getenv('MONGODB_URI')
+    db_name = 'mongotest'
+    client = pymongo.MongoClient(uri)
+    db = client.get_default_database()
+    SEED_DATA = [
+    {
+        'decade': '1970s',
+        'artist': 'Debby Boone',
+        'song': 'You Light Up My Life',
+        'weeksAtOne': 10
+    },
+    {
+        'decade': '1980s',
+        'artist': 'Olivia Newton-John',
+        'song': 'Physical',
+        'weeksAtOne': 10
+    },
+    {
+        'decade': '1990s',
+        'artist': 'Mariah Carey',
+        'song': 'One Sweet Day',
+        'weeksAtOne': 16
+    }
+    ]
+    songs = db['songs']
+    songs.insert_many(SEED_DATA)
 
 # Add log in page
 
@@ -134,4 +153,5 @@ def singout():
 
 
 if __name__ == '__main__':
+    main()
     app.run(host='0.0.0.0', port=8105, debug=True)
