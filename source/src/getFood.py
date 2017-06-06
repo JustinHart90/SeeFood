@@ -1,8 +1,10 @@
 import requests, json
 import os
+import sys
 import urllib.request, json
 from bs4 import BeautifulSoup
 import pickle
+import pymongo
 
 
 def request():
@@ -21,7 +23,11 @@ def request():
     #'cautions', 'ingredientLines', 'ingredients', 'calories', 'totalWeight', 'totalNutrients', 'totalDaily', 'digest'])
     app = str(os.environ.get("EDAM_APP"))
     api = str(os.environ.get("EDAM_KEY"))
-
+    #connect to mongo
+    uri = str(os.environ.get("MONGODB_URI"))
+    client = pymongo.MongoClient(uri)
+    db = client.get_default_database()
+    micro = db['micro']
     nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
     write_out = []
 
@@ -38,8 +44,10 @@ def request():
                     print(len(fdata['hits']))
                     if len(fdata['hits']) > 0:
                         for i,y in enumerate(fdata['hits']):
-                            write_out.append({'key': i, 'label' : fdata['hits'][i]['recipe']['label'],'image_url' : fdata['hits'][i]['recipe']['image'], 'calories' : fdata['hits'][i]['recipe']['calories'], 'totalNutrients' : fdata['hits'][i]['recipe']['totalNutrients']})
-        pickle.dump( write_out, open( '../data/'+name+ ".pickle", "wb" ) )
+                            micro.insert_one({'cat': name, 'key': i, 'label' : fdata['hits'][i]['recipe']['label'],'image_url' : fdata['hits'][i]['recipe']['image'], 'calories' : fdata['hits'][i]['recipe']['calories'], 'totalNutrients' : fdata['hits'][i]['recipe']['totalNutrients']})
+
+        #                     write_out.append({'key': i, 'label' : fdata['hits'][i]['recipe']['label'],'image_url' : fdata['hits'][i]['recipe']['image'], 'calories' : fdata['hits'][i]['recipe']['calories'], 'totalNutrients' : fdata['hits'][i]['recipe']['totalNutrients']})
+        # pickle.dump( write_out, open( '../data/'+name+ ".pickle", "wb" ) )
 
 
 

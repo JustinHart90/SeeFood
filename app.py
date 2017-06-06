@@ -10,37 +10,10 @@ import pickle
 from flask import Flask, render_template, request, redirect
 from flask_restful import Resource, Api
 from pymongo import MongoClient
+import pymongo
 
-def main():
-    uri = os.getenv('MONGODB_URI')
-    db_name = 'mongotest'
-    client = pymongo.MongoClient(uri)
-    db = client.get_default_database()
-    SEED_DATA = [
-    {
-        'decade': '1970s',
-        'artist': 'Debby Boone',
-        'song': 'You Light Up My Life',
-        'weeksAtOne': 10
-    },
-    {
-        'decade': '1980s',
-        'artist': 'Olivia Newton-John',
-        'song': 'Physical',
-        'weeksAtOne': 10
-    },
-    {
-        'decade': '1990s',
-        'artist': 'Mariah Carey',
-        'song': 'One Sweet Day',
-        'weeksAtOne': 16
-    }
-    ]
-    songs = db['songs']
-    songs.insert_many(SEED_DATA)
 
-# Add log in page
-
+app = Flask(__name__)
 
 # index page
 @app.route('/')
@@ -97,21 +70,14 @@ def api():
         if key == '89477':
             nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
             name = np.random.choice(nameList, 1)
-            try:
-                import pandas as pd
-            except ImportError:
-                return render_template('api_error.html' )
-            df = pd.read_csv('data/test.csv')
-            # entry = df[random.randint(0,9)]
-            # index = entry['key']
-            # cals = entry['calories']
-            # tn = entry['totalNutrients']
-            # data = {'index' : index, 'calories' : cals, 'totalNutrients': tn }
-            # x = {'key': str(key), 'response': data }
-            # response = json.dumps(x, ensure_ascii=False)
-            # #nice
+            uri = str(os.environ.get("MONGODB_URI"))
+            client = pymongo.MongoClient(uri)
+            db = client.get_default_database()
+            micro = db['micro']
+            cursor = micro.find_one( {"$and":[ {"key":0}, {"cat":{"$regex": str(name)}}] })
 
-            return render_template('api.html', data = df.head() )
+
+            return render_template('api.html', data = cursor )
         else:
             return render_template('api_error.html' )
     else:
@@ -153,5 +119,4 @@ def singout():
 
 
 if __name__ == '__main__':
-    main()
     app.run(host='0.0.0.0', port=8105, debug=True)
