@@ -85,7 +85,7 @@ def api():
             response = json.dumps(x, ensure_ascii=False)
             # #nice
 
-            return render_template('api.html', data = nameList )
+            return render_template('api.html', data = response )
         else:
             return render_template('api_error.html' )
     else:
