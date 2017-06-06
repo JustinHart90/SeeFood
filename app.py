@@ -82,17 +82,17 @@ def api():
                 import pandas as pd
             except ImportError:
                 return render_template('api_error.html' )
-            df = pd.read_pickle('data/tacos.pickle')
-            entry = df[random.randint(0,9)]
-            index = entry['key']
-            cals = entry['calories']
-            tn = entry['totalNutrients']
-            data = {'index' : index, 'calories' : cals, 'totalNutrients': tn }
+            df = pd.read_csv('data/test.csv')
+            # entry = df[random.randint(0,9)]
+            # index = entry['key']
+            # cals = entry['calories']
+            # tn = entry['totalNutrients']
+            # data = {'index' : index, 'calories' : cals, 'totalNutrients': tn }
             # x = {'key': str(key), 'response': data }
             # response = json.dumps(x, ensure_ascii=False)
             # #nice
 
-            return render_template('api.html', data = data )
+            return render_template('api.html', data = df.head() )
         else:
             return render_template('api_error.html' )
     else:
