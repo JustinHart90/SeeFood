@@ -75,8 +75,8 @@ def api():
         if key == '89477':
             nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
             name = random.choice(nameList)
-            df = pd.read_pickle('data/tacos.pickle')
-            entry = random.sample(df, 1)
+            # df = pd.read_pickle('data/tacos.pickle')
+            # entry = random.sample(df, 1)
             # index = entry[0]['key']
             # cals = entry[0]['calories']
             # tn = entry[0]['totalNutrients']
