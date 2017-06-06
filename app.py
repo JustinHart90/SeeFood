@@ -74,10 +74,16 @@ def api():
             client = pymongo.MongoClient(uri)
             db = client.get_default_database()
             micro = db['micro']
-            cursor = micro.find_one( {"$and":[ {"key":0}, {"cat":{"$regex": str(name)}}] })
+            cursor = micro.find_one( {"$and":[ {"key":random.randint(0,98)}, {"cat":{"$regex": str(name)}}] })
+            cat = cursor['cat']
+            key = cursor['key']
+            name = cursor['label']
+            cals = cursor['calories']
+            tn = cursor['totalNutrients']
+            response = {'key': key, 'cat': cat, 'key' : key, 'name':name, 'calories' : cals, 'totalNutrients': tn}
+            x = json.dumps(response, sort_keys=True, indent=4)
 
-
-            return render_template('api.html', data = cursor )
+            return render_template('api.html', data = x )
         else:
             return render_template('api_error.html' )
     else:
