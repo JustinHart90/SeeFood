@@ -12,7 +12,7 @@ from flask_restful import Resource, Api
 from pymongo import MongoClient
 
 def main():
-    mongo_url = os.getenv('MONGODB_URI')
+    uri = os.getenv('MONGODB_URI')
     db_name = 'mongotest'
     client = pymongo.MongoClient(uri)
     db = client.get_default_database()
