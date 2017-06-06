@@ -77,10 +77,10 @@ def api():
             nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
             name = np.random.choice(nameList, 1)
             df = pd.read_pickle('data/tacos.pickle')
-            entry = random.sample(df, 1)
-            index = entry[0]['key']
-            cals = entry[0]['calories']
-            tn = entry[0]['totalNutrients']
+            entry = df[random.randint(0,9)]
+            index = entry['key']
+            cals = entry['calories']
+            tn = entry['totalNutrients']
             data = {'index' : index, 'calories' : cals, 'totalNutrients': tn }
             x = {'key': str(key), 'response': data }
             response = json.dumps(x, ensure_ascii=False)
