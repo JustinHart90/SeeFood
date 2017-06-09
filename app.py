@@ -13,9 +13,9 @@ from pymongo import MongoClient
 import pymongo
 from datetime import datetime
 
-import urllib.request
-from PIL import Image
-import io
+# import urllib.request
+# from PIL import Image
+# import io
 # from scipy.misc import imread, imsave, imresize, fromimage
 
 
