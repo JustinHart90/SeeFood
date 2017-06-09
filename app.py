@@ -75,15 +75,19 @@ def api():
             nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
             name = np.random.choice(nameList, 1)
 
-            res = urllib.request.urlopen(link)
-            data = io.BytesIO(res.read())
-            im = Image.open(data)
-            imgdata = fromimage(im, flatten=False, mode='RGB')
+            try:
+                res = urllib.request.urlopen(link)
+                data = io.BytesIO(res.read())
+                im = Image.open(data)
+                imgdata = fromimage(im, flatten=False, mode='RGB')
 
-            imgresized = imresize(imgdata, size = (300,300))
+                imgresized = imresize(imgdata, size = (300,300))
+            except:
+                return render_template('api_error.html' )
+
 
             #use model
-            
+
 
 
 
