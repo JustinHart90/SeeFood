@@ -15,7 +15,7 @@ import pymongo
 from datetime import datetime
 from PIL import Image
 import io
-from urllib import request
+from urllib import request as dance
 
 app = Flask(__name__)
 
@@ -75,7 +75,7 @@ def api():
             nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
             name = np.random.choice(nameList, 1)
 
-            res = urllib.request.urlopen(link)
+            res = dance.urlopen(link)
             data = io.BytesIO(res.read())
             im = Image.open(data)
             imgdata = fromimage(im, flatten=False, mode='RGB')
