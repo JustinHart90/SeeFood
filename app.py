@@ -13,10 +13,11 @@ from pymongo import MongoClient
 import pymongo
 from datetime import datetime
 
-# import urllib.request
-# from PIL import Image
-# import io
-# from scipy.misc import imread, imsave, imresize, fromimage
+from urllib import request as rq
+from PIL import Image
+import io
+from scipy import misc
+# from misc import imread, imsave, imresize, fromimage
 
 
 app = Flask(__name__)
@@ -77,13 +78,14 @@ def api():
             nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
             name = np.random.choice(nameList, 1)
 
+
             try:
-                res = urllib.request.urlopen(link)
+                res = rq.urlopen(link)
                 data = io.BytesIO(res.read())
                 im = Image.open(data)
-                imgdata = fromimage(im, flatten=False, mode='RGB')
+                imgdata = misc.fromimage(im, flatten=False, mode='RGB')
 
-                imgresized = imresize(imgdata, size = (300,300))
+                imgresized = misc.imresize(imgdata, size = (300,300))
             except Exception as e:
                 return render_template('api_error.html', error = 'There was trouble with the image' )
 
