@@ -12,6 +12,8 @@ from flask_restful import Resource, Api
 from pymongo import MongoClient
 import pymongo
 from datetime import datetime
+from PIL import Image
+import io
 
 
 app = Flask(__name__)
@@ -72,6 +74,17 @@ def api():
             nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
             name = np.random.choice(nameList, 1)
 
+            request = urllib.request.urlopen(link)
+            data = io.BytesIO(request.read())
+            im = Image.open(data)
+            imgdata = fromimage(im, flatten=False, mode='RGB')
+
+            imgresized = imresize(imgdata, size = (300,300))
+
+
+
+
+
             # connect to mongo DB
             uri = str(os.environ.get("MONGODB_URI"))
             client = pymongo.MongoClient(uri)
@@ -93,7 +106,7 @@ def api():
             #get data from api pings and add image to bucket
             req = db['api-req']
             req.insert_one({'api_key': api_key, 'date' : datetime.now() })
-            return render_template('api.html', data = x, link = link )
+            return render_template('api.html', data = x, link = imgresized )
         else:
             return render_template('api_error.html' )
     else:
@@ -132,6 +145,10 @@ def singout():
     global logged_In
     logged_In = False
     return render_template('login.html', title= 'Login')
+
+
+def get_image_data():
+
 
 
 if __name__ == '__main__':
