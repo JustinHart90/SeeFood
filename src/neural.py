@@ -106,6 +106,8 @@ class NNmaker():
         DNA={}
         batch_size = randint(1,5000)
         DNA['BS']=batch_size
+        epochs = randint(1,10)
+        DNA['epochs']=epochs
         nb_filters = randint(10,20)
         DNA['NumFileter']=nb_filters
         x = randint(1,6)
@@ -256,7 +258,7 @@ class NNmaker():
                     DNA['Dense_Nur'] = Dense_Nur
                     print(Dense_Nur)
                 while len(Dense_Nur) > DenseLayers :
-                    Dense_Activ.pop()
+                    Dense_Nur.pop()
                     DNA['Dense_Nur'] = Dense_Nur
                     print(Dense_Nur)
 

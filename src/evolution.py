@@ -8,6 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
 from keras import backend as K
 from pymongo import MongoClient
+from random import randint
 
 
 
@@ -33,7 +34,7 @@ def get_data():
     yc = preprocessing.LabelEncoder().fit_transform(y)
     # print(yc)
 
-    X_train, X_test, y_train, y_test = train_test_split(X, yc, test_size=0.33, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, yc, test_size=0.25, random_state=42)
 
     X_train = np.asarray(X_train)
     X_test = np.asarray(X_test)
@@ -53,10 +54,10 @@ def get_data():
 
 def mixGenDNA(DNA_pool, X_train, y_train, X_test, y_test, classes, gen):
     #[name, test_acc, DNA]
-    DNA_Pool = DNA_pool
+    DNA_Pool = DNA_pool.copy()
     NewGenDNA = {}
     while len(DNA_Pool) > 1:
-        mates = np.random.choice(list(DNA_pool.keys()),2, replace=False)
+        mates = np.random.choice(list(DNA_Pool.keys()),2, replace=False)
         acc1 = DNA_Pool[mates[0]][1]
         acc2 = DNA_Pool[mates[1]][1]
 
@@ -77,7 +78,8 @@ def mixGenDNA(DNA_pool, X_train, y_train, X_test, y_test, classes, gen):
         model = maker.reporduce_CNN(X_train, X_test, classes, DNA2)
         score = training_Time(model,DNA2, X_train, y_train, X_test, y_test, name, gen, mates[0], mates[1] )
         NewGenDNA[name]= [name, score[0],score[1], DNA2, name, gen]
-    return NewGenDNA
+        DNA_pool.update(NewGenDNA)
+    return DNA_pool, len(NewGenDNA)
     # print('{} and {} had a baby'.format(mates[0],mates[1]))
     # print(DNA1)
 
@@ -89,8 +91,8 @@ def evolve():
 
     np.random.seed(rng_seed)
     DNAPop = {}
-    num_gen = 1
-    num_pop = 2
+    num_gen = 5
+    num_pop = 5
     for pop in range(num_pop):
         maker = NNmaker()
         name = names.get_first_name()
@@ -100,24 +102,42 @@ def evolve():
         DNAPop[name]= [name, score[1],score[0], DNA, 1]
 
     for gen in range(num_gen):
-        for pop in range(num_pop):
-            print(DNAPop)
-            NewGenDNA = mixGenDNA(DNAPop, X_train, y_train, X_test, y_test,classes, (gen+2))
+        print('Generation: ' + str((gen + 1)))
+        # for pop in range(num_pop):
+
+        DNAPop, childs = mixGenDNA(DNAPop, X_train, y_train, X_test, y_test,classes, (gen+2))
+        DNAPop = killOff(DNAPop,childs)
 
         # print(NewGenDNA)
+def killOff(DNAPop, childs):
+    pop = []
+    for key in DNAPop.keys():
+        pop.append([DNAPop[key][1], key])
+    sorts = sorted(pop)
+    for i in range(childs):
+        for x, person in enumerate(sorts):
+            if randint(0,3) != 3:
+                print('kill')
+                del DNAPop[person[1]]
+                sorts.pop(x)
+                break
+        else:
+            continue
+        # add death to Mongo
+    return DNAPop
 
 
 def training_Time(model,DNA, X_train, y_train, X_test, y_test, name, gen, parent1, parent2):
     #[name, score[0],score[1], DNA2, name, gen]
 
-    model.fit(X_train, y_train, batch_size=100000, epochs=1,
+    model.fit(X_train, y_train, batch_size=DNA['BS'], epochs=DNA['epochs'],
       verbose=1, validation_data=(X_test, y_test), initial_epoch=0)
     score = model.evaluate(X_test, y_test, verbose=0)
     print('score 1: ' + str(score[0]))
     print('score 2: ' + str(score[1]))
     uploadModels(DNA, model, name, score[0],score[1], gen, parent1, parent2)
-    with open('model.pkl', 'wb') as f:
-        pickle.dump(model, f)
+    # with open('model.pkl', 'wb') as f:
+    #     pickle.dump(model, f)
     return score
 
 def uploadModels(DNA, model, name, score1, score2, gen, parent1, parent2):
@@ -133,7 +153,5 @@ def uploadModels(DNA, model, name, score1, score2, gen, parent1, parent2):
 if __name__ == '__main__':
     # get_data()
     evolve()
-    # mixGenDNA({'Jack': ['Jack', 0.07575757575757576, 14.897027911561908, {'BS': 1992, 'NumFileter': 17, 'PoolSize': (1, 1), 'KS': (4, 4), 'C2DLayers': 1, 'c2d_Activ': ['relu'], 'DenseLayers': 2, 'Dense_Activ': ['linear', 'relu'], 'Dense_Nur': [5, 9], 'Drop': 0.3743549710567178}], 'Mary': ['Mary', 0.07575757575757576, 2.9761664795153067, {'BS': 4946, 'NumFileter': 13, 'PoolSize': (4, 4), 'KS': (4, 4), 'C2DLayers': 2, 'c2d_Activ': ['relu', 'linear'], 'DenseLayers': 1, 'Dense_Activ': ['tanh'], 'Dense_Nur': [9], 'Drop': 0.5621857482114412}]}, 10, 10 , 10, 10, 10, 2)
-    # main()
     # popdna ={'Robert': ['Robert', 0.1087, {'NumN': 315, 'NumL': 3, 'LM': [4, 0, 5], 'LA': ['tanh', 'relu', 'tanh'], 'LI': 'random_uniform', 'LR': 0.0038882690316379698}], 'Brian': ['Brian', 0.1115, {'NumN': 485, 'NumL': 4, 'LM': [2, 2, 5, 0], 'LA': ['tanh', 'softplus', 'softsign', 'softsign'], 'LI': 'random_uniform', 'LR': 0.004628537323412493}], 'Celine': ['Celine', 0.14979999999999999, {'NumN': 32, 'NumL': 0, 'LM': [], 'LA': [], 'LI': 'random_uniform', 'LR': 0.0833583941408591}]}
     #mixGenDNA(popdna)
