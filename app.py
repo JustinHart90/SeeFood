@@ -12,10 +12,10 @@ from flask_restful import Resource, Api
 from pymongo import MongoClient
 import pymongo
 from datetime import datetime
+import io
 
 # from urllib import request as rq
 # from PIL import Image
-import io
 from scipy import misc
 # from misc import imread, imsave, imresize, fromimage
 
