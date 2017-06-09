@@ -11,6 +11,7 @@ from flask import Flask, render_template, request, redirect
 from flask_restful import Resource, Api
 from pymongo import MongoClient
 import pymongo
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -65,24 +66,33 @@ def api_dash():
 @app.route('/api', methods = ["GET", "POST"])
 def api():
     if request.method == 'GET':
-        key = request.args.get("key")
-        print(key)
-        if key == '89477':
+        api_key = request.args.get("key")
+        api_key = request.args.get("link")
+        if api_key == '89477':
             nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
             name = np.random.choice(nameList, 1)
+
+            # connect to mongo DB
             uri = str(os.environ.get("MONGODB_URI"))
             client = pymongo.MongoClient(uri)
             db = client.get_default_database()
             micro = db['micro']
+
+            #make Query with prediction
             cursor = micro.find_one( {"$and":[ {"key":random.randint(0,98)}, {"cat":{"$regex": str(name)}}] })
             cat = cursor['cat']
             key = cursor['key']
             name = cursor['label']
             cals = cursor['calories']
             tn = cursor['totalNutrients']
+            #return the data
             response = {'key': key, 'cat': cat, 'key' : key, 'name':name, 'calories' : cals, 'totalNutrients': tn}
             x = json.dumps(response, sort_keys=True, indent=4)
 
+
+            #get data from api pings and add image to bucket
+            req = db['api-req']
+            req.insert_one({'api_key': api_key, 'date' : datetime.now() })
             return render_template('api.html', data = x )
         else:
             return render_template('api_error.html' )
