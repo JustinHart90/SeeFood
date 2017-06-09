@@ -10,7 +10,7 @@ from keras import backend as K
 from pymongo import MongoClient
 
 
-import theano
+
 import random
 import numpy as np
 import pandas as pd
@@ -102,6 +102,7 @@ def evolve():
         for pop in range(num_pop):
             print(DNAPop)
             NewGenDNA = mixGenDNA(DNAPop, X_train, y_train, X_test, y_test,classes, (gen+2))
+
         # print(NewGenDNA)
 
 
@@ -113,6 +114,8 @@ def training_Time(model,DNA, X_train, y_train, X_test, y_test, name, gen):
     print('score 1: ' + str(score[0]))
     print('score 2: ' + str(score[1]))
     uploadModels(DNA, model, name, score[0],score[1], gen)
+    with open('model.pkl', 'wb') as f:
+        pickle.dump(model, f)
     return score
 
 def uploadModels(DNA, model, name, score1, score2, gen):

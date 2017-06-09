@@ -20,6 +20,7 @@ from PIL import Image
 
 
 
+
 app = Flask(__name__)
 
 # index page
@@ -80,15 +81,24 @@ def api():
 
 
 
-            try:
-                r = requests.get(link)
-                data = io.BytesIO(r.content)
-                im = Image.open(data)
-                imgdata = misc.fromimage(im, flatten=False, mode='RGB')
+            # try:
+            r = requests.get(link)
+            data = io.BytesIO(r.content)
+            im = Image.open(data)
+            imgdata = misc.fromimage(im)
+            # imgresized = misc.imresize(imgdata, size = (300,300))
+            imgresized = imgdata
+            imgresized = imgresized.astype('float32')
+            imgresized.reshape(imgresized.shape + (1,))
+            imgresized /= 255
+            imgresized = np.reshape(imgresized, (1,  300, 300, 3))
+            print((imgresized))
 
-                imgresized = misc.imresize(imgdata, size = (300,300))
-            except Exception as e:
-                return render_template('api_error.html', error = 'There was trouble with the image' )
+            # except Exception as e:
+            #     return render_template('api_error.html', error = 'There was trouble with the image' )
+            model = pickle.load( open( "model.pkl", "rb" ) )
+            prdiction = model.predict(imgresized)
+
 
 
 
@@ -114,7 +124,7 @@ def api():
             #get data from api pings and add image to bucket
             req = db['api-req']
             req.insert_one({'api_key': api_key, 'date' : datetime.now() })
-            return render_template('api.html', data = x, link = imgresized )
+            return render_template('api.html', data = '', link = imgresized )
         else:
             return render_template('api_error.html' )
     else:
