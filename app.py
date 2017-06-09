@@ -14,9 +14,9 @@ import pymongo
 from datetime import datetime
 
 import urllib.request
-# from PIL import Image
+from PIL import Image
 import io
-from scipy.misc import imread, imsave, imresize, fromimage
+# from scipy.misc import imread, imsave, imresize, fromimage
 
 
 app = Flask(__name__)
