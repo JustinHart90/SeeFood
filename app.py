@@ -13,11 +13,11 @@ from pymongo import MongoClient
 import pymongo
 from datetime import datetime
 import io
+from scipy import misc
 
 # from urllib import request as rq
-# from PIL import Image
-from scipy import misc
-# from misc import imread, imsave, imresize, fromimage
+from PIL import Image
+
 
 
 app = Flask(__name__)

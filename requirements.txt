@@ -20,3 +20,4 @@ requests==2.10.0
 s3transfer==0.1.10
 six==1.10.0
 Werkzeug==0.12.2
+PIL==4.1.0
