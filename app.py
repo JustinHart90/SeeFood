@@ -67,7 +67,7 @@ def api_dash():
 def api():
     if request.method == 'GET':
         api_key = request.args.get("key")
-        api_key = request.args.get("link")
+        link = request.args.get("link")
         if api_key == '89477':
             nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
             name = np.random.choice(nameList, 1)
@@ -93,7 +93,7 @@ def api():
             #get data from api pings and add image to bucket
             req = db['api-req']
             req.insert_one({'api_key': api_key, 'date' : datetime.now() })
-            return render_template('api.html', data = x )
+            return render_template('api.html', data = x, link = link )
         else:
             return render_template('api_error.html' )
     else:

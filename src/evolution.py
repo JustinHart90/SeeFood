@@ -101,8 +101,7 @@ def evolve():
     for gen in range(num_gen):
         for pop in range(num_pop):
             print(DNAPop)
-            NewGenDNA = mixGenDNA(DNAPop, X_train, y_train, X_test, y_test,classes, gen)
-            uploadModels(DNAPop, (gen + 2))
+            NewGenDNA = mixGenDNA(DNAPop, X_train, y_train, X_test, y_test,classes, (gen+2))
         # print(NewGenDNA)
 
 
