@@ -16,9 +16,9 @@ def test(link):
     data = io.BytesIO(response.read())
     im = Image.open(data)
     imgdata = fromimage(im, flatten=False, mode='RGB')
-    print(imgdata.shape)
+
     imgresized = imresize(imgdata, size = (150,150))
-    print(imgresized.shape)
+
 
     if imgdata.shape == (300, 300, 3):
         pass
