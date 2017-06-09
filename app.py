@@ -15,7 +15,7 @@ import pymongo
 from datetime import datetime
 from PIL import Image
 import io
-import urllib.request
+from urllib import request
 
 app = Flask(__name__)
 
@@ -75,19 +75,14 @@ def api():
             nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
             name = np.random.choice(nameList, 1)
 
-            # try:
-            #     res = urllib.request.urlopen(link)
-            #     data = io.BytesIO(res.read())
-            #     im = Image.open(data)
-            #     imgdata = fromimage(im, flatten=False, mode='RGB')
-            #
-            #     imgresized = imresize(imgdata, size = (300,300))
-            # except:
-            #     return render_template('api_error.html' )
+            res = urllib.request.urlopen(link)
+            data = io.BytesIO(res.read())
+            im = Image.open(data)
+            imgdata = fromimage(im, flatten=False, mode='RGB')
 
+            imgresized = imresize(imgdata, size = (300,300))
 
             #use model
-
 
 
 
@@ -157,4 +152,4 @@ def singout():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=33507)
+    app.run(host='0.0.0.0', port=8105, debug=True)
