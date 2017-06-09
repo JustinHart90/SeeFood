@@ -96,8 +96,8 @@ def api():
 
             # except Exception as e:
             #     return render_template('api_error.html', error = 'There was trouble with the image' )
-            model = pickle.load( open( "model.pkl", "rb" ) )
-            prdiction = model.predict(imgresized)
+            # model = pickle.load( open( "model.pkl", "rb" ) )
+            # prdiction = model.predict(imgresized)
 
 
 
@@ -124,7 +124,7 @@ def api():
             #get data from api pings and add image to bucket
             req = db['api-req']
             req.insert_one({'api_key': api_key, 'date' : datetime.now() })
-            return render_template('api.html', data = '', link = imgresized )
+            return render_template('api.html', data = x )
         else:
             return render_template('api_error.html' )
     else:
