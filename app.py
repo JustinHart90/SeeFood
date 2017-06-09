@@ -14,9 +14,9 @@ import pymongo
 from datetime import datetime
 import io
 from scipy import misc
-
-# from urllib import request as rq
 from PIL import Image
+
+
 
 
 
@@ -79,9 +79,10 @@ def api():
             name = np.random.choice(nameList, 1)
 
 
+
             try:
-                res = rq.urlopen(link)
-                data = io.BytesIO(res.read())
+                r = requests.get(link)
+                data = io.BytesIO(r.content)
                 im = Image.open(data)
                 imgdata = misc.fromimage(im, flatten=False, mode='RGB')
 
