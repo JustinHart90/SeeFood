@@ -13,8 +13,8 @@ from pymongo import MongoClient
 import pymongo
 from datetime import datetime
 
-from urllib import request as rq
-# from PIL import Image
+# from urllib import request as rq
+from PIL import Image
 # import io
 # from scipy import misc
 # from misc import imread, imsave, imresize, fromimage
