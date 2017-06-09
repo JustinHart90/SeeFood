@@ -9,13 +9,13 @@ import sys
 import pickle
 from flask import Flask, render_template, request, redirect
 from flask_restful import Resource, Api
-from scipy.misc import imread, imsave, imresize, fromimage
+# from scipy.misc import imread, imsave, imresize, fromimage
 from pymongo import MongoClient
 import pymongo
 from datetime import datetime
 from PIL import Image
 import io
-from urllib import request as dance
+# from urllib import request as dance
 
 app = Flask(__name__)
 
@@ -75,12 +75,12 @@ def api():
             nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
             name = np.random.choice(nameList, 1)
 
-            res = dance.urlopen(link)
-            data = io.BytesIO(res.read())
-            im = Image.open(data)
-            imgdata = fromimage(im, flatten=False, mode='RGB')
-
-            imgresized = imresize(imgdata, size = (300,300))
+            # res = dance.urlopen(link)
+            # data = io.BytesIO(res.read())
+            # im = Image.open(data)
+            # imgdata = fromimage(im, flatten=False, mode='RGB')
+            #
+            # imgresized = imresize(imgdata, size = (300,300))
 
             #use model
 
