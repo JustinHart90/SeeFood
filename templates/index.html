@@ -1,289 +1,657 @@
 
-<!DOCTYPE html>
-<html lang="en">
+		{% include 'includes/header.html' %}
+    <!-- IE Warning CSS -->
+		<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="css/ie-warning.css" ><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="css/ie8-fix.css" ><![endif]-->
 
-<head>
+    <!-- Magnific popup  in style.css	Owl Carousel Assets in style.css -->
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<!-- CSS end -->
 
-    <title>FyreFraud</title>
+<!-- JS begin some js files in bottom of file-->
 
-    <!-- Bootstrap Core CSS -->
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
 
-    <link href="{{url_for('static', filename='../static/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Modernizr -->
+    <!-- <script src="js/modernizr.js"></script> -->
 
-    <!-- MetisMenu CSS -->
-    <link href="{{url_for('static', filename='../static/vendor/metisMenu/metisMenu.min.css')}}""" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="{{url_for('static', filename='../static/dist/css/sb-admin-2.css')}}""" rel="stylesheet">
+	<body>
 
-    <!-- Morris Charts CSS -->
-    <link href="{{url_for('static', filename='../static/vendor/morrisjs/morris.css')}}" rel="stylesheet">
+		<!-- LOADER -->
+		<div id="loader-overflow">
+      <div id="loader3">Please enable JS</div>
+    </div>
 
-    <!-- Custom Fonts -->
-    <link href="{{url_for('static', filename='../static/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+		<div id="wrap" class="boxed ">
+			<div class="grey-bg"> <!-- Grey BG  -->
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+				<!--[if lte IE 8]>
+				<div id="ie-container">
+					<div id="ie-cont-close">
+						<a href='#' onclick='javascript&#058;this.parentNode.parentNode.style.display="none"; return false;'><img src='images/ie-warn/ie-warning-close.jpg' style='border: none;' alt='Close'></a>
+					</div>
+					<div id="ie-cont-content" >
+						<div id="ie-cont-warning">
+							<img src='images/ie-warn/ie-warning.jpg' alt='Warning!'>
+						</div>
+						<div id="ie-cont-text" >
+							<div id="ie-text-bold">
+								You are using an outdated browser
+							</div>
+							<div id="ie-text">
+								For a better experience using this site, please upgrade to a modern web browser.
+							</div>
+						</div>
+						<div id="ie-cont-brows" >
+							<a href='http://www.firefox.com' target='_blank'><img src='images/ie-warn/ie-warning-firefox.jpg' alt='Download Firefox'></a>
+							<a href='http://www.opera.com/download/' target='_blank'><img src='images/ie-warn/ie-warning-opera.jpg' alt='Download Opera'></a>
+							<a href='http://www.apple.com/safari/download/' target='_blank'><img src='images/ie-warn/ie-warning-safari.jpg' alt='Download Safari'></a>
+							<a href='http://www.google.com/chrome' target='_blank'><img src='images/ie-warn/ie-warning-chrome.jpg' alt='Download Google Chrome'></a>
+						</div>
+					</div>
+				</div>
+				<![endif]-->
 
-</head>
 
-<body>
 
-    <div id="wrapper">
+					<!-- MAIN MENU CONTAINER -->
 
-        <!-- Navigation -->
-        {% include 'includes/header.html' %}
-        {% include 'includes/sidebar.html' %}
+          {% include 'includes/menu.html' %}
+					<!-- SEARCH READ DOCUMENTATION -->
+					<ul class="cd-header-buttons">
+						<li><a class="cd-search-trigger" href="#cd-search"><span></span></a></li>
+					</ul> <!-- cd-header-buttons -->
+					<div id="cd-search" class="cd-search">
+						<form class="form-search" id="searchForm" action="page-search-results.html" method="get">
+							<input type="text" value="" name="q" id="q" placeholder="Search...">
+						</form>
+					</div>
 
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header"> Model Dashboard</h1>
-                </div>
-                <!-- /.col-lg-12 -->
+				  </div>
+				  <!-- END header-wrapper -->
+
+				</header>
+
+        <!-- FLEX SLIDER -->
+        <div class="indent-header">
+          <div class="slider-1 clearfix">
+
+            <div class="flex-container">
+              <div class="flexslider loading">
+                <ul class="slides">
+
+                  <!-- SLIDE 1 -->
+                  <li style="background:url({{url_for('static', filename='../static/images/food-6.jpg')}}) no-repeat; background-position:50% 0">
+                    <div class="container">
+                      <div class="sixteen columns contain">
+                      </div>
+                    </div><!-- End Container -->
+                  </li><!-- End item -->
+
+                  <!-- SLIDE 2 -->
+                  <li style="background:url({{url_for('static', filename='../static/images/food.jpeg')}}) no-repeat;background-position:50% 0">
+
+                    <div class="container">
+                      <div class="sixteen columns contain">
+                      </div>
+                    </div><!-- End Container -->
+
+                  </li><!-- End item -->
+
+                  <!-- SLIDE 3 -->
+                  <li style="background:url({{url_for('static', filename='../static/images/food2.jpg')}}) no-repeat; background-position:50% 0">
+
+                    <div class="container">
+                      <div class="sixteen columns contain">
+
+                      </div>
+                    </div><!-- End Container -->
+
+                  </li><!-- End item -->
+
+                </ul>
+              </div>
             </div>
-            <!-- /.row -->
+
+          </div><!-- End slider -->
+        </div>
+
+
+				<div class="page-section grey-light-bg pt-80-b-50-cont">
+          <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-check fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">{{TP}}%</div>
-                                    <div>True Postivive Rate</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/scores">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-times fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">{{FP}}%</div>
-                                    <div>False Postivie Rate</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                  <div class="huge">{{FN}}%</div>
-                                  <div>False Negative Rate</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-check-circle fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">{{TN}}%</div>
-                                    <div>True Negative Rate</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+
+              <div class="col-md-9 pb-30 text-center-sm">
+								<div class="col-md-12">
+	                <div class="mb-50">
+									  <h2 class="section-title">DSI <span class="bold">SeeFood</span></h2>
+									</div>
+								</div>
+									<h2 class="mt-0 mb-5"><span class="bold">Problem</span></h2>
+	                <h4><span>When your an avid food logger it can be difficult to stay on top of logging your meals when you are in a hurry. Sometimes you just don't remember everything that was in the meal.</span></h4>
+                <h2 class="mt-0 mb-5"><span class="bold">Solution</span></h2>
+                <h4><span>The goal of DSI-SeeFood is to identify a user's image of a plate of food and return the micro nutrient counts for the identified dish. This is done by taking the closest related recipe image and returning its micro nutrient counts.</span></h4>
+              </div>
+						</div>
+
+
             </div>
-            <!-- /.row -->
+          </div>
+        </div>
+        <!-- BLOG 1 -->
+        <div class="page-section pt-110-b-30-cont">
+          <div class="container">
+						<div class="col-md-12">
+							<div class="mb-50">
+								<h2 class="section-title">The <span class="bold">Data</span></h2>
+							</div>
+						</div>
+						<h3><span>The data came from an API from a website called <a style="color:blue;" href="http://http://food2fork.com">food2fork</a></span></h3>
+						<h3><span>With food2fork you make a request with a certain keyword and the json response contains the name, image url, and the micro-nutirents.
+						We then take the image link provided and scrape the image off of the api.  </a></span></h3>
+						<br />
+						<h2 class="mt-0 mb-5"><span class="bold">Examples</span></h2>
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-bullseye fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">{{accuracy}}%</div>
-                                    <div>Accuracy</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/scores">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
+
+              <!-- Post Item 1 -->
+              <div class="col-sm-6 col-md-4 col-lg-4 wow fadeIn pb-70" >
+
+                <div class="post-prev-img">
+                  <img src="{{url_for('static', filename='../static/images/t0.jpg')}}" alt="img">
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">{{percision}}%</div>
-                                    <div>Precision</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
+
+                <div class="post-prev-title">
+                  <h3><a href="#">Tacos</a></h3>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-cogs fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">{{F1}}%</div>
-                                    <div>F1 Score</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
+
+                <div class="post-prev-info">
+                  Example Response:
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">{{time}}</div>
-                                    <div>Prediction Time</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
+
+                <div style="overflow-y: scroll; height:200px;" class="post-prev-text no-border">
+									"name": "Uncle Ray's Crawfish Tacos", "image_url": "https://www.edamam.com/web-img/b6d/b6da6e61ae1e9e4c6d0dec0a06b2e0c5.jpg", "calories": 3777.3231101292263, "totalNutrients": { "ENERC_KCAL": { "label": "Energy", "quantity": 3777.3231101292263, "unit": "kcal" }, "FAT": { "label": "Fat", "quantity": 294.4100541766353, "unit": "g" }, "FASAT": { "label": "Saturated", "quantity": 115.27750486814912, "unit": "g" }, "FATRN": { "label": "Trans", "quantity": 3.604879048194885, "unit": "g" }, "FAMS": { "label": "Monounsaturated", "quantity": 130.17326769163503, "unit": "g" }, "FAPU": { "label": "Polyunsaturated", "quantity": 22.17917192474904, "unit": "g" }, "CHOCDF": { "label": "Carbs", "quantity": 82.93138786965841, "unit": "g" }, "FIBTG": { "label": "Fiber", "quantity": 27.028811426874757, "unit": "g" }, "SUGAR": { "label": "Sugars", "quantity": 32.48175626122265, "unit": "g" }, "PROCNT": { "label": "Protein", "quantity": 217.05912140846726, "unit": "g" }, "CHOLE": { "label": "Cholesterol", "quantity": 1505.9827301979064, "unit": "mg" }, "NA": { "label": "Sodium", "quantity": 4425.2672222572855, "unit": "mg" }, "CA": { "label": "Calcium", "quantity": 2645.8104272238634, "unit": "mg" }, "MG": { "label": "Magnesium", "quantity": 550.9793977346346, "unit": "mg" }, "K": { "label": "Potassium", "quantity": 4515.394603613797, "unit": "mg" }, "FE": { "label": "Iron", "quantity": 19.494643457930632, "unit": "mg" }, "ZN": { "label": "Zinc", "quantity": 23.953853427761885, "unit": "mg" }, "P": { "label": "Phosphorus", "quantity": 4102.917357457969, "unit": "mg" }, "VITA_RAE": { "label": "Vitamin A", "quantity": 1563.6353102594699, "unit": "µg" }, "VITC": { "label": "Vitamin C", "quantity": 55.95560162973405, "unit": "mg" }, "THIA": { "label": "Thiamin (B1)", "quantity": 1.0617380517936088, "unit": "mg" }, "RIBF": { "label": "Riboflavin (B2)", "quantity": 2.1095807390074492, "unit": "mg" }, "NIA": { "label": "Niacin (B3)", "quantity": 22.070284788691357, "unit": "mg" }, "VITB6A": { "label": "Vitamin B6", "quantity": 1.722504711193002, "unit": "mg" }, "FOLDFE": { "label": "Folate (Equivalent)", "quantity": 449.028968314048, "unit": "µg" }, "VITB12": { "label": "Vitamin B12", "quantity": 21.153781525230407, "unit": "µg" }, "VITD": { "label": "Vitamin D", "quantity": 3.1667771244049074, "unit": "µg" }, "TOCPHA": { "label": "Vitamin E", "quantity": 45.70922011611537, "unit": "mg" }, "VITK1": { "label": "Vitamin K", "quantity": 91.54439890533888, "unit": "µg" } }}
+								</div>
+
+              </div>
+
+              <!-- Post Item 2 -->
+              <div class="col-sm-6 col-md-4 col-lg-4 wow fadeIn pb-70" data-wow-delay="200ms" >
+
+                <div class="post-prev-img">
+                	<img src="{{url_for('static', filename='../static/images/st0.jpg')}}" alt="img">
                 </div>
+
+                <div class="post-prev-title">
+                  <h3><a href="#">Steak</a></h3>
+                </div>
+
+                <div class="post-prev-info">
+                  Example Response:
+                </div>
+
+                <div style="overflow-y: scroll; height:200px;" class="post-prev-text no-border">
+									"name": "The Famous Fiorentina", "image_url": "https://www.edamam.com/web-img/71e/71ec4a0e20fbb1b6a778045a13c36ebd.jpg", "calories": 3625.0985386694338, "totalNutrients": { "ENERC_KCAL": { "label": "Energy", "quantity": 3625.0985386694338, "unit": "kcal" }, "FAT": { "label": "Fat", "quantity": 269.9087248685059, "unit": "g" }, "FASAT": { "label": "Saturated", "quantity": 98.51982658957033, "unit": "g" }, "FATRN": { "label": "Trans", "quantity": 12.383071606445313, "unit": "g" }, "FAMS": { "label": "Monounsaturated", "quantity": 138.94565885173586, "unit": "g" }, "FAPU": { "label": "Polyunsaturated", "quantity": 15.629086583549805, "unit": "g" }, "CHOCDF": { "label": "Carbs", "quantity": 13.747995865600586, "unit": "g" }, "FIBTG": { "label": "Fiber", "quantity": 4.409859818603516, "unit": "g" }, "SUGAR": { "label": "Sugars", "quantity": 2.9293909203124997, "unit": "g" }, "PROCNT": { "label": "Protein", "quantity": 273.9085631438233, "unit": "g" }, "CHOLE": { "label": "Cholesterol", "quantity": 843.6818017578125, "unit": "mg" }, "NA": { "label": "Sodium", "quantity": 3570.4709041884084, "unit": "mg" }, "CA": { "label": "Calcium", "quantity": 338.720555969826, "unit": "mg" }, "MG": { "label": "Magnesium", "quantity": 153.29031887351897, "unit": "mg" }, "K": { "label": "Potassium", "quantity": 3338.469420199577, "unit": "mg" }, "FE": { "label": "Iron", "quantity": 23.787368191933126, "unit": "mg" }, "ZN": { "label": "Zinc", "quantity": 45.1739429786849, "unit": "mg" }, "P": { "label": "Phosphorus", "quantity": 2393.568036772461, "unit": "mg" }, "VITA_RAE": { "label": "Vitamin A", "quantity": 56.831013435058594, "unit": "µg" }, "VITC": { "label": "Vitamin C", "quantity": 61.48, "unit": "mg" }, "THIA": { "label": "Thiamin (B1)", "quantity": 0.6909249546191406, "unit": "mg" }, "RIBF": { "label": "Riboflavin (B2)", "quantity": 2.6849815405761723, "unit": "mg" }, "NIA": { "label": "Niacin (B3)", "quantity": 70.43901977057372, "unit": "mg" }, "VITB6A": { "label": "Vitamin B6", "quantity": 7.8353776098608385, "unit": "mg" }, "FOLDFE": { "label": "Folate (Equivalent)", "quantity": 81.57955130126955, "unit": "µg" }, "VITB12": { "label": "Vitamin B12", "quantity": 22.588899853515624, "unit": "µg" }, "VITD": { "label": "Vitamin D", "quantity": 1.360777099609375, "unit": "µg" }, "TOCPHA": { "label": "Vitamin E", "quantity": 11.644858414453124, "unit": "mg" }, "VITK1": { "label": "Vitamin K", "quantity": 61.798079929931646, "unit": "µg" } }}
+                </div>
+
+              </div>
+
+              <!-- Post Item 3 -->
+              <div class="col-sm-6 col-md-4 col-lg-4 wow fadeIn pb-70" data-wow-delay="400ms" >
+
+                <div class="post-prev-img">
+                  <img src="{{url_for('static', filename='../static/images/h40.jpg')}}" alt="img">
+                </div>
+
+                <div class="post-prev-title">
+                  <h3><a href="#">Hotdogs</a></h3>
+                </div>
+
+                <div class="post-prev-info">
+                  Example Response:
+                </div>
+
+                <div style="overflow-y: scroll; height:200px;" class="post-prev-text no-border">
+                "name": "Grilled Bratwurst with Chow-Chow Recipe", "image_url": "https://www.edamam.com/web-img/728/72893320691e8d7d1bf87e3eb8824bb6.jpg", "calories": 4866.084653320312, "totalNutrients": { "ENERC_KCAL": { "label": "Energy", "quantity": 4866.084653320312, "unit": "kcal" }, "FAT": { "label": "Fat", "quantity": 112.13360327453614, "unit": "g" }, "FASAT": { "label": "Saturated", "quantity": 33.165147776489256, "unit": "g" }, "FATRN": { "label": "Trans", "quantity": 0.38952000000000003, "unit": "g" }, "FAMS": { "label": "Monounsaturated", "quantity": 42.27529911376953, "unit": "g" }, "FAPU": { "label": "Polyunsaturated", "quantity": 23.599980448608406, "unit": "g" }, "CHOCDF": { "label": "Carbs", "quantity": 852.8628466796876, "unit": "g" }, "FIBTG": { "label": "Fiber", "quantity": 46.2211555480957, "unit": "g" }, "SUGAR": { "label": "Sugars", "quantity": 646.6486587280274, "unit": "g" }, "PROCNT": { "label": "Protein", "quantity": 115.61742649536133, "unit": "g" }, "CHOLE": { "label": "Cholesterol", "quantity": 268.8, "unit": "mg" }, "NA": { "label": "Sodium", "quantity": 10480.937579351807, "unit": "mg" }, "CA": { "label": "Calcium", "quantity": 1297.8700331975665, "unit": "mg" }, "MG": { "label": "Magnesium", "quantity": 382.99767327349076, "unit": "mg" }, "K": { "label": "Potassium", "quantity": 5050.991830218687, "unit": "mg" }, "FE": { "label": "Iron", "quantity": 28.970995058669914, "unit": "mg" }, "ZN": { "label": "Zinc", "quantity": 14.273255001299269, "unit": "mg" }, "P": { "label": "Phosphorus", "quantity": 1485.7625231933594, "unit": "mg" }, "VITA_RAE": { "label": "Vitamin A", "quantity": 316.18877990722655, "unit": "µg" }, "VITC": { "label": "Vitamin C", "quantity": 791.1431632080079, "unit": "mg" }, "THIA": { "label": "Thiamin (B1)", "quantity": 4.1195920022583, "unit": "mg" }, "RIBF": { "label": "Riboflavin (B2)", "quantity": 2.0634357800292973, "unit": "mg" }, "NIA": { "label": "Niacin (B3)", "quantity": 42.86776446289062, "unit": "mg" }, "VITB6A": { "label": "Vitamin B6", "quantity": 3.642372436523438, "unit": "mg" }, "FOLDFE": { "label": "Folate (Equivalent)", "quantity": 1091.3415557861326, "unit": "µg" }, "VITB12": { "label": "Vitamin B12", "quantity": 4.2048, "unit": "µg" }, "VITD": { "label": "Vitamin D", "quantity": 5.3759999999999994, "unit": "µg" }, "TOCPHA": { "label": "Vitamin E", "quantity": 8.24495668029785, "unit": "mg" }, "VITK1": { "label": "Vitamin K", "quantity": 762.5750227661134, "unit": "µg" } }}
+                </div>
+
+              </div>
+
             </div>
-            <!-- /.row -->
+
+          </div>
+        </div>
+
+        <!-- Preprocessing-->
+				<div class="port-view-more-cont">
+          <p class="port-view-more" ></p>
+        </div>
+
+				<!-- CLIENTS 1 & TESTIMONIALS 1 -->
+        <div class="page-section p-110-cont">
+					<div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="panel panel-body">
-                      <img src="{{url_for('static', filename='../static/venn_attempt.png')}}" alt="Mountain View" style="width:800px;">
+
+              <div class="col-md-12">
+                <div class="mb-50">
+								  <h2 class="section-title">Image <span class="bold">preprocessing</span></h2>
+								</div>
+							</div>
+
+						</div>
+            <div class="row">
+              <!-- CLIENTS 1 -->
+              <div class="col-md-7">
+                <div class="row client-row border-bot">
+
+                    <div class="col-xs-6 col-sm-3 text-center">
+                      <img alt="client" src="{{url_for('static', filename='../static/images/im.jpg')}}">
                     </div>
-                    <div class="panel panel-body">
-                    <img src="{{url_for('static', filename='../static/color_map.png')}}" alt="Mountain View" style="width:800px;">
+
+                    <div class="col-xs-6 col-sm-3 text-center">
+                      <img alt="client" src="{{url_for('static', filename='../static/images/im2.jpg')}}">
+                    </div>
+
+                    <div class="col-xs-6 col-sm-3 text-center">
+                      <img alt="client" src="{{url_for('static', filename='../static/images/im3.jpg')}}">
+                    </div>
+
+                    <div class="col-xs-6 col-sm-3 text-center">
+                      <img alt="client" src="{{url_for('static', filename='../static/images/im4.jpg')}}">
+                    </div>
+
+                </div>
+
+                <div class="row client-row">
+
+                    <div class="col-xs-6 col-sm-3 text-center">
+                      <img alt="client" src="{{url_for('static', filename='../static/images/im5.jpg')}}">
+                    </div>
+
+                    <div class="col-xs-6 col-sm-3 text-center">
+                      <img alt="client" src="{{url_for('static', filename='../static/images/im6.jpg')}}">
+                    </div>
+
+                    <div class="col-xs-6 col-sm-3 text-center">
+                      <img alt="client" src="{{url_for('static', filename='../static/images/im7.jpg')}}">
+                    </div>
+
+                    <div class="col-xs-6 col-sm-3 text-center">
+                      <img alt="client" src="{{url_for('static', filename='../static/images/im8.jpg')}}">
+                    </div>
+
+                </div>
+
+							</div>
+              <!-- TESTIMONIALS 1 -->
+              <div class="col-md-5">
+                <blockquote class="quote mb-0 pl-50-min-1169">
+                  <p>When training the models that return the closest recipe we run into a problem. The training data is only one image for every recipe. In order to fix this we add create more images for the model to train on by rotating them.</p>
+                 </blockquote>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+				<!-- DIVIDER -->
+				<hr class="mt-0 mb-0">
+
+        <!-- PORTFOLIO SECTION 2 -->
+        <div class="page-section">
+          <div class="relative">
+
+            <div class="mt-50 mb-50 text-center">
+              <h2 class="section-title-2">MODEL <span class="bold">FRAMEWORKS</span></h2>
+
+            </div>
+						<div class="col-md-10 col-md-offset-1">
+							<blockquote class="quote mb-0 pl-50-min-1169">
+								<p></p>
+							 </blockquote>
+						</div>
+
+
+						<iframe frameborder="0" style="width:100%;height:700px;" src="https://www.draw.io/?lightbox=1&highlight=000000&edit=_blank&layers=1&nav=1&title=API%20one.xml#R7Vpbc6M2GP01fkwHJG5%2BjL1xuzPb6c5kp%2B0%2ByvAZ1GBEhRzb%2BfUVIIxBkHgTjJ1m8%2BDApyvnHEkHoQmer3e%2FcpJGv7MA4gkygt0Ef5ogNLUN%2BZsH9mXARrgMhJwGZcisA%2Ff0CVRQlQs3NICskVEwFguaNoM%2BSxLwRSNGOGfbZrYVi5utpiQELXDvk1iP%2FkUDEZVRr3qsPP4b0DCqWjYNlbIk%2FkPI2SZR7U0QXhV%2FZfKaVHWp%2FFlEArY9CuG7CZ5zxkR5td7NIc6hrWAryy16Ug%2F95pCIUwq4qsQjiTdQdbnomNhXYMg%2BpvmlrJXEMcQs5GQ9wbNtRAXcp8TPE7dSBzIWiXUs70x5mQnOHmDOYsaLevDSsy2JIJ6taBwfxVeeD74v47LegMqOH6UBcZaOI9NUN4EL2PU%2Bq3lAUAoT2BoE38ssVQFPga5EiZFb3m9riu2KmOiY3op3omQVHuquoZUXCt0eaoyXkYZAqlDdMi4iFrKExHd1dFZIC%2FIqjSba%2F4AQezWQyEYwGapr%2BMJYqvKVbeYNPY%2Bi7BfbcF%2FlUl0VhIegck27seYQE0Efm7W%2FBTekwTYnAkJWtKYmnh7Bwk72dRawzbJIMRv4mS8ruKXTgIC38ruU7fgeLFfdCnalhMEYRsHYsRsKNg1dwWaXgp0BBIy8dyxg09UVXA7%2FESRcTR%2FDAAU7Kv7Ow7%2B4trr9XiUlsmfHafn9d1XFBQAea46wzfMAjJ4BGF0BwLhnuhgc4Krxo7H%2FlT49keuZgu%2FwYr6YDzPNHtyZmmaRNeY02wE1pClwltAJcsg6RyhZZunhWUeA3QYvsLpg99ASF%2F6sY%2BWbuoHhuuehBOMTKcFDUDLVPUgEkMEHxt8bEX%2Bsv6Tck02Wv8N9WAKsMQeAhTUChlxwz7xw2vrCaaGxnIl1HmdyVdavC2BrLIDt8wB8VdavC2BnJICrxo8nXwHk4f9p%2FWyj%2BYY9qvWz9L2ObzczlnygZa6N%2F6g%2Bz7I0%2FBc0liNOSp2GCUs%2BMA9j%2Br1ybmuOA05vBE0%2FLgGj%2Bj17UHvXs6gazy2q57eFU31NxaNtCOIRXOGP%2BJJe9zgsvm%2FdD1RFvzKaiHqo4GlrqFRbKFUVZR9UqZqlW87J%2FihbmmfINB4PHT2JWn2r4BvxWXaFbimgHHxB5aom64NMDDNvtT9RjGqgsO5V5xH1H%2BCaVu4O3M%2B8lrQ5GdVUYX0%2Fc0Gz6CchF9tN06eoGcDqJyGXclumTohuD5LgNj%2FXIu%2F8mGQZ9fs8wDP7Ftq2xetWdqSv7GaPczo%2BWdGBXhV7qwFoHewwvZYBKHuvGQC9IqP14Qef5iRe4RMqMb1n0u1Lkm7h1lkI97Wkmy3SrbORbp1w2upF0nuo7RfE60nv8vAXJb39FcRuW%2F1TSUdu63NKe8oYjnR7qnM8xMtee8yf93XZ9nQtoG4pDP%2B6rJ88%2BpykG6HhWlkWIU0IPLG8%2FLs7pdi2ItXDj%2BFEXNQxPzlxbsBWrBg%2BNdjOvxtWJdxkhexuZQZkpbs6UV6F%2Bf8%2FNqLgq6xLdqOsrkyswgF9bIeWvB2RZRv5WgoQpVvtJTjJd9Ob3KoQiWmYG05f8gQyPstZpD6Jb1XCmgZBMTa7FMWZIMqxWvYwQnCs9pEHQ1OC1SEEyx5ACF0ffEsCspQkJwlh2iWEBSdr2LL869GfwLMcMWSYR%2BSW1V8ZuwOwiTyraVemGpnIQzqb6MeHtbytD5CXC1Z9SB%2Ff%2FQc%3D"></iframe>
+
+						<iframe frameborder="0" style="width:100%;height:700px;" src="https://www.draw.io/?lightbox=1&highlight=000000&edit=_blank&layers=1&nav=1&title=API%20one.xml#R7Vpdc6M2FP01fkwHJL78GLtx25nudGey03YfZbiAGoyokGMnv76S%2BUY4dRIg7m7z4KArIYlzru49SCzwenf8iZMs%2FsQCSBbICI4L%2FOMCoaVtyF9leCoMNsKFIeI0KExmY7inz1Aay%2FuiPQ0g7zQUjCWCZl2jz9IUfNGxEc7ZodssZEl31IxEoBnufZLo1j9oIOLC6lWPpew%2FA43iamTTKGu2xH%2BIONun5XgLhMPTX1G9I1VfZfs8JgE7tEz4boHXnDFRXO2Oa0gUtBVsxX2bM7X1vDmk4qIbynk8kmQP1ZRPExNPFRgQSGzKIuMiZhFLSXLXWFenBwbVpSFLsdgl8tKUl3%2BBEE8lvWQvmDQ1PfzKWFa2K8ZUA519jsoNCI%2BgNC1rwKQfAtuB4E%2ByCYeECPrY7YqUHhHV7epbPzMqB0FG6bwWsotbSt81K66qLnK25z6UdzXY3nJOnlrNMtUgv3ycZY%2BpVzWXF8X4VamFSGM6kT%2FsCMj7jzlCwUJpcnXnQO47vaMF7YvIVUFhHKDgSMWfyvyDa5fFr1VVKmfWrlPlr2UXHwDwe5ffxQCb0wCMXgAYXQHA2JwJ4Grw1tr%2FTJ%2BfiTSVmb0Hv8xambqEo5zqKmD77anG7OCuSoeYCrjPyOkxD1IqdLkIaZKsWcL4qVscEPBCX9pzwdkDtGru8Ga9WdfoPgIXcHwZXx238oY691bxHZeR7tBk%2Bjrmx60s7xjvhxoNQA1ZBpylVJrVsDLMO2SnkEq3eVY%2F8wzw2%2BAF1hD8Htpix5E1EScBlTi36pZuYLjuNNQgdCE1eARqXHeSMNOKMe24XdfVMaaonDbMFDG7G2Zce6YwUw3e8v11DJCDtLmF48%2Fj6FKOI38wzgTO1rHPOHoYBsvTIpjC0d0ZHR2bGg%2F3ZJ%2BrVyJk2HMScX0RB88ZcSysETFmCJpYsdh6KLHQTKHEtiaJ1deluYcAtuYCWI8B357mHgLYmQngavB2EBZAHr5NzW0bvT2VOTW3hTSov9ysWKrSHf6usl2fhln1tWVpNGxoAmqL6xONUpaq95%2Fvm445VWAR6bqrgtMbQTNpNL9rHmYVgfaomu9Mpq3fNIcy7fRaceCtE8%2B2PYtnkIqvEStnJeW4%2BE5zOIKXvaViom4XxRxecTjS4fF1Zxb6fsIX4rP8CiVUQDn4gsocJ%2FuDXIwTt7DzgaoK6wJ2HVP%2FAdLryx8D8E%2BcUvrUzKq0sL7JvKF5fH366gp4mXXjTQ9YK4Dw%2F%2FWi8zKrBDN1XnTNkAa36sMSWfITkufU7wmDJqtr2xiNaOjvfrwt3duenu%2FNM3qqhZ89AF9le68scHtnahd%2BM6F3ZPQ6cqyL9MVbvni45NOXa2f9zNnNPKxb3lism72O3MlYt%2FTDj9FYN8%2Bybowq7T%2BU9P6JidV%2FA7iUdNSLGdjtdTQe6bb%2BcdMvabYXZ1OukEkUnpm6%2F9%2Byq5ZFt55t2Yaed0PPh9Op40AqBeJsxzpb7KfS6uFnOUMfOtFyEiUg8oykHbCdv%2FfqK8dVyFJxk5%2Fem2%2BVRF1mx6ZSXkXq%2F4aTHRyY2h7%2FHXhOq93Com85raL7orFGqygk1FnWUrUZ3CWsNJGERkoF%2BRJ8kPaVoob6JLktK3Y0CE5bBkNuMgKbyLO6oXGpsYk8pLPZD8VvYlN%2FxfttL15aN%2FK5SJJAwqSP796wdgJ3uTWG1k7oB8gbXjthSGzDmGbt1LpmgjdqWWy%2B8y2CWvMtNb77Bw%3D%3D"></iframe>
+
+        <!-- FEATURES 7 -->
+        <div class="page-section grey-light-bg clearfix">
+          <div class="fes7-img-cont col-md-5">
+            <div class="fes7-img" style="background-image: url(images/fes7-constr.jpg)"></div>
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 col-md-offset-6 fes7-text-cont p-80-cont">
+                <h1><span class="font-light">Nulla varius faucibus vestibulum. Sed imperdiet, tellus at iaculis</span></h1>
+                <p class="mb-60">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                </p>
+
+                <div class="row">
+
+                  <div class="col-md-6 col-sm-6">
+                    <div class="fes7-box wow fadeIn" >
+                      <div class="fes7-box-icon">
+                        <div class="icon icon-ecommerce-graph-increase"></div>
+                      </div>
+                      <h3>SEO Friendly</h3>
+                      <p>Sed ut perspiciatis unde omnis iste nat eror acus  antium que</p>
+                    </div>
                   </div>
 
-
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="morris-area-chart"></div>
-                        </div>
-                        <!-- /.panel-body -->
+                  <div class="col-md-6 col-sm-6">
+                    <div class="fes7-box wow fadeIn" data-wow-delay="200ms">
+                      <div class="fes7-box-icon">
+                        <div class="icon icon-software-font-smallcaps"></div>
+                      </div>
+                      <h3>Google Fonts</h3>
+                      <p>Sed ut perspiciatis unde omnis iste nat eror acus  antium que</p>
                     </div>
-                    <!-- /.panel -->
+                  </div>
 
-
-                        <!-- /.panel-footer -->
-                    </div>
-                    <!-- /.panel .chat-panel -->
                 </div>
-                <!-- /.col-lg-4 -->
-            </div>
-            <!-- /.row -->
+
+                <div class="row">
+
+                  <div class="col-md-6 col-sm-6">
+                    <div class="fes7-box wow fadeIn" data-wow-delay="400ms">
+                      <div class="fes7-box-icon">
+                        <div class="icon icon-basic-mixer2"></div>
+                      </div>
+                      <h3>Tons of Shortcodes</h3>
+                      <p>Sed ut perspiciatis unde omnis iste nat eror acus  antium que</p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-sm-6">
+                    <div class="fes7-box wow fadeIn"  data-wow-delay="600ms">
+                      <div class="fes7-box-icon">
+                        <div class="icon icon-basic-bolt"></div>
+                      </div>
+                      <h3>1500+ Icons</h3>
+                      <p>Sed ut perspiciatis unde omnis iste nat eror acus  antium que</p>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div><!--end of row-->
+          </div>
         </div>
-        <!-- /#page-wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
+				<!-- FEATURES 8 -->
+				<div class="page-section fes4-cont">
+					<div class="container">
+            <div class="row">
 
-    <!-- jQuery -->
-    <script src="{{url_for('static', filename='../static/vendor/jquery/jquery.min.js')}}"></script>
+							<div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="fes8-box wow fadeIn">
+								  <div class="fes8-title-cont" >
+								  	<div class="fes8-box-icon">
+								  		<div class="icon icon-basic-smartphone"></div>
+								  	</div>
+								  	<h3>RETINA READY GRAPHICS</h3>
+								  </div>
+								  <div>
+								     Maecenas luctus nisi in sem fermentum blat. In nec  elit solliudin, elementum.
+								  </div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="fes8-box wow fadeIn" data-wow-delay="200ms">
+								  <div class="fes8-title-cont" >
+								  	<div class="fes8-box-icon">
+								  		<div class="icon icon-basic-mixer2"></div>
+								  	</div>
+								  	<h3>PARALLAX SUPPORT</h3>
+								  </div>
+								  <div>
+								     Maecenas luctus nisi in sem fermentum blat. In nec  elit solliudin, elementum.
+								  </div>
+								</div>
+							</div>
+              <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="fes8-box wow fadeIn" data-wow-delay="400ms">
+								  <div class="fes8-title-cont" >
+								  	<div class="fes8-box-icon">
+								  		<div class="icon icon-basic-share"></div>
+								  	</div>
+								  	<h3>ENDLESS POSSIBILITIES</h3>
+								  </div>
+								  <div>
+								     Seductio maesto nisi in sem fermentum blat. In nec elit solliudin, elementum.
+								  </div>
+								</div>
+							</div>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{url_for('static', filename='../static/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+						</div>
+						<div class="row">
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="{{url_for('static', filename='../static/vendor/metisMenu/metisMenu.min.js')}}"></script>
+              <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="fes8-box wow fadeIn" data-wow-delay="600ms">
+								  <div class="fes8-title-cont" >
+								  	<div class="fes8-box-icon">
+								  		<div class="icon icon-basic-paperplane"></div>
+								  	</div>
+								  	<h3>CLEAR DESIGN</h3>
+								  </div>
+								  <div>
+								    Donec vel luctus nisi in sem fermentum blat. In nec elit solliudin, elementum.
+								  </div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="fes8-box wow fadeIn" data-wow-delay="800ms" >
+								  <div class="fes8-title-cont" >
+								  	<div class="fes8-box-icon">
+								  		<div class="icon icon-basic-chronometer"></div>
+								  	</div>
+								  	<h3>POWERFUL PERFORMANCE</h3>
+								  </div>
+								  <div>
+								    Lorem luctus antena at nisi in sem blandit. In nec elit soltudin, elementum odio.
+								  </div>
+								</div>
+							</div>
+              <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="fes8-box wow fadeIn" data-wow-delay="1000ms">
+								  <div class="fes8-title-cont" >
+								  	<div class="fes8-box-icon">
+								  		<div class="icon icon-software-horizontal-align-center"></div>
+								  	</div>
+								  	<h3>FLEXIBLE WIDGETS</h3>
+								  </div>
+								  <div>
+								    Fermentum nisi in sem fertum blat. In elit soldin, elemtum, arenam pur quam volut.
+								  </div>
+								</div>
+							</div>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="{{url_for('static', filename='../static/vendor/raphael/raphael.min.js')}}"></script>
-    <script src="{{url_for('static', filename='js/plugins/morris/raphael.min.js')}}"></script>
-    <script src="{{url_for('static', filename='js/plugins/morris/raphael.min.js')}}"></script>
+            </div>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="{{url_for('static', filename='../static/dist/js/sb-admin-2.js')}}"></script>
+						<div class="row">
 
-</body>
+              <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="fes8-box wow fadeIn" data-wow-delay="600ms">
+								  <div class="fes8-title-cont" >
+								  	<div class="fes8-box-icon">
+								  		<div class="icon icon-basic-laptop"></div>
+								  	</div>
+								  	<h3>RESPONSIVE LAYOUT</h3>
+								  </div>
+								  <div>
+								    Donec vel luctus nisi in sem fermentum blat. In nec elit solliudin, elementum, dictum pur quam volutpat suscipit antena.
+								  </div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="fes8-box wow fadeIn" data-wow-delay="800ms" >
+								  <div class="fes8-title-cont" >
+								  	<div class="fes8-box-icon">
+								  		<div class="icon icon-music-play-button"></div>
+								  	</div>
+								  	<h3>HTML5 VIDEO</h3>
+								  </div>
+								  <div>
+								    Lorem luctus antena at nisi in sem blandit. In nec elit soltudin, elementum odio et, dictum quam a volutpat elementum.
+								  </div>
+								</div>
+							</div>
+              <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="fes8-box wow fadeIn" data-wow-delay="1000ms">
+								  <div class="fes8-title-cont" >
+								  	<div class="fes8-box-icon">
+								  		<div class="icon icon-basic-info"></div>
+								  	</div>
+								  	<h3>WELL DOCUMENTED</h3>
+								  </div>
+								  <div>
+								    Fermentum nisi in sem fertum blat. In elit soldin, elemtum, arenam pur quam volutpat suscipit dictum pur quam.
+								  </div>
+								</div>
+							</div>
 
+            </div>
+					</div>
+				</div>
+
+				<!-- ABOUT US 2 -->
+				<div class="page-section about-us-2-cont pt-100-cont">
+					<div class="container">
+
+            <div class="row">
+              <div class="col-md-12 text-center wow fadeInUp" data-wow-duration="1s">
+                <img src="images/team/team-all-constr.jpg" alt="img">
+              </div>
+            </div>
+
+					</div>
+        </div>
+
+        <!-- CALL TO ACTION  -->
+        <div class="port-view-more-cont-dark">
+          <a class="port-view-more-dark " href="contact.html">LET'S WORK TOGETHER</a>
+        </div>
+
+        <!-- CONTACT INFO SECTION 1 -->
+        <div class="page-section p-110-cont">
+          <div class="container">
+            <div class="row">
+
+              <div class="col-md-4 col-sm-6">
+                <div class="cis-cont">
+                  <div class="cis-icon">
+                    <div class="icon icon-basic-map"></div>
+                  </div>
+                  <div class="cis-text">
+                    <h3><span class="bold">ADDRESS</span></h3>
+                    <p>790 FOLSOM AVE, SAN FRANCISCO</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="cis-cont">
+                  <div class="cis-icon">
+                    <div class="icon icon-basic-mail"></div>
+                  </div>
+                  <div class="cis-text">
+                    <h3><span class="bold">EMAIL</span></h3>
+                    <p><a href="mailto:info@haswell.com">INFO@HASWELL.COM</a></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="cis-cont">
+                  <div class="cis-icon">
+                    <div class="icon icon-basic-smartphone"></div>
+                  </div>
+                  <div class="cis-text">
+                    <h3><span class="bold">CALL US</span></h3>
+                    <p>1-800-312-212, 1-800-311-101</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+				<!-- GOOGLE MAP & CONTACT FORM -->
+        <div class="page-section gray-bg">
+					<div class="container-fluid">
+						<div class="row">
+
+							<div class="col-md-6">
+                <div class="row">
+                  <div data-address="580 California Street, San Francisco, CA" id="google-map"></div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="contact-form-cont">
+                  <!-- TITLE -->
+                  <div class="mb-40">
+                    <h2 class="section-title">CONTACT <span class="bold">US</span></h2>
+                  </div>
+
+                  <!-- CONTACT FORM -->
+                  <div>
+                    <form id="contact-form" action="php/contact-form.php" method="POST">
+
+                      <div class="row">
+                        <div class="col-md-12 mb-30">
+                          <!-- <label>Your name *</label> -->
+                          <input type="text" value="" data-msg-required="Please enter your name" maxlength="100" class="controled" name="name" id="name" placeholder="NAME" required>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 mb-30">
+                          <!-- <label>Your email address *</label> -->
+                          <input type="email" value="" data-msg-required="Please enter your email address" data-msg-email="Please enter a valid email address" maxlength="100" class="controled" name="email" id="email" placeholder="EMAIL" required>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 mb-40">
+                          <!-- <label>Message *</label> -->
+                          <textarea maxlength="5000" data-msg-required="Please enter your message" rows="3" class="controled" name="message" id="message" placeholder="MESSAGE" required></textarea>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 text-center-xxs">
+                          <input type="submit" value="SEND MESSAGE" class="button medium gray" data-loading-text="Loading...">
+                        </div>
+                      </div>
+
+                    </form>
+                    <div class="alert alert-success hidden animated fadeIn" id="contactSuccess" >
+                      <strong>Success!</strong> Your message has been sent to us.
+                    </div>
+
+                    <div class="alert alert-danger hidden animated shake" id="contactError">
+                      <strong>Error!</strong> There was an error sending your message.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        {% include 'includes/footer.html' %}
+
+	</body>
 </html>

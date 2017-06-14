@@ -32,7 +32,7 @@ def get_data():
     y = pd.read_pickle("../data/cat.pkl")
 
     yc = preprocessing.LabelEncoder().fit_transform(y)
-    # print(yc)
+    clss = len(np.unique(yc))
 
     X_train, X_test, y_train, y_test = train_test_split(X, yc, test_size=0.25, random_state=42)
 
@@ -42,10 +42,8 @@ def get_data():
     X_test = X_test.astype('float32')
     X_train /= 255 # normalizing (scaling from 0 to 1)
     X_test /= 255
-    clss = len(np.unique(y_train))
     y_train = np.asarray(y_train)
     y_test = np.asarray(y_test)
-
     Y_train = np_utils.to_categorical(y_train, clss) # cool
     Y_test = np_utils.to_categorical(y_test, clss)
 
@@ -114,6 +112,7 @@ def killOff(DNAPop, childs):
     for key in DNAPop.keys():
         pop.append([DNAPop[key][1], key])
     sorts = sorted(pop)
+    print(sorts)
     for i in range(childs):
         for x, person in enumerate(sorts):
             if randint(0,3) != 3:
@@ -146,12 +145,12 @@ def uploadModels(DNA, model, name, score1, score2, gen, parent1, parent2):
         client = pymongo.MongoClient(uri)
         db = client.get_default_database()
         m = db['models']
-        m.insert_one({'name': name, 'DNA':DNA, 'score': score1, 'loss':score2, 'gen': gen, 'parent1': parent1, 'parent2': parent2 })
+        m.insert_one({'name': name, 'DNA':DNA, 'score': score2, 'loss':score1, 'gen': gen, 'parent1': parent1, 'parent2': parent2 })
 
 
 
 if __name__ == '__main__':
     # get_data()
     evolve()
-    # popdna ={'Robert': ['Robert', 0.1087, {'NumN': 315, 'NumL': 3, 'LM': [4, 0, 5], 'LA': ['tanh', 'relu', 'tanh'], 'LI': 'random_uniform', 'LR': 0.0038882690316379698}], 'Brian': ['Brian', 0.1115, {'NumN': 485, 'NumL': 4, 'LM': [2, 2, 5, 0], 'LA': ['tanh', 'softplus', 'softsign', 'softsign'], 'LI': 'random_uniform', 'LR': 0.004628537323412493}], 'Celine': ['Celine', 0.14979999999999999, {'NumN': 32, 'NumL': 0, 'LM': [], 'LA': [], 'LI': 'random_uniform', 'LR': 0.0833583941408591}]}
+    # popdna = killOff({'Robert': ['Robert', 0.1087, {'NumN': 315, 'NumL': 3, 'LM': [4, 0, 5], 'LA': ['tanh', 'relu', 'tanh'], 'LI': 'random_uniform', 'LR': 0.0038882690316379698}], 'Brian': ['Brian', 0.1115, {'NumN': 485, 'NumL': 4, 'LM': [2, 2, 5, 0], 'LA': ['tanh', 'softplus', 'softsign', 'softsign'], 'LI': 'random_uniform', 'LR': 0.004628537323412493}], 'Celine': ['Celine', 0.14979999999999999, {'NumN': 32, 'NumL': 0, 'LM': [], 'LA': [], 'LI': 'random_uniform', 'LR': 0.0833583941408591}]},2)
     #mixGenDNA(popdna)

@@ -29,7 +29,7 @@ def request():
     client = pymongo.MongoClient(uri)
     db = client.get_default_database()
     micro = db['micro']
-    nameList = ['burrito', 'pizza', 'enchilada', 'salmon', 'fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
+    nameList = ['tacos']
     write_out = []
 
     for name in nameList:

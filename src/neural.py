@@ -92,7 +92,7 @@ class NNmaker():
         LR = random.uniform(0.1, 0.0001)
         DNA['LR'] = LR
         sgd = SGD(lr=LR, decay=1e-7, momentum=.9) # using stochastic gradient descent (keep)
-        model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=["accuracy"] )
+        model.compile(loss='binary_crossentropy', optimizer=sgd, metrics=["accuracy"] )
         self.PopDNA.append(DNA)
         return model, DNA
 
@@ -175,7 +175,7 @@ class NNmaker():
         model.add(Activation('softmax'))
         #----------------------------
 
-        model.compile(loss='categorical_crossentropy',
+        model.compile(loss='binary_crossentropy',
                       optimizer='adam',
                       metrics=['accuracy'])
         return model, DNA
@@ -273,7 +273,80 @@ class NNmaker():
             model.add(Activation('softmax'))
             #----------------------------
 
-            model.compile(loss='categorical_crossentropy',
+            model.compile(loss='binary_crossentropy',
                           optimizer='adam',
                           metrics=['accuracy'])
             return model
+
+    def handmade(self, X_train, X_test, classes):
+        img_rows, img_cols = 300, 300
+        nb_classes = classes
+        #-------------
+        nb_filters = 24
+        pool_size = (2,2)
+        kernel_size = (4, 4)
+
+
+
+        #dont change
+        model = Sequential()
+        input_shape = (img_rows, img_cols,3)
+        if K.image_dim_ordering() == 'th':
+            X_train = X_train.reshape(X_train.shape[0], 3, img_rows, img_cols)
+            X_test = X_test.reshape(X_test.shape[0], 3, img_rows, img_cols)
+            input_shape = (3, img_rows, img_cols)
+        else:
+            X_train = X_train.reshape(X_train.shape[0], img_rows, img_cols, 3)
+            X_test = X_test.reshape(X_test.shape[0], img_rows, img_cols, 3)
+            input_shape = (img_rows, img_cols, 3)
+
+        #----------------------
+
+        #options: 'linear', 'sigmoid', 'tanh', 'relu', 'softplus', 'softsign'
+
+        model.add(Convolution2D(nb_filters, (kernel_size[0], kernel_size[1]),
+                                padding='valid',
+                                input_shape=input_shape))
+        model.add(Activation("relu"))
+
+        model.add(Convolution2D(nb_filters, (kernel_size[0], kernel_size[1]),
+                                padding='valid',
+                                input_shape=input_shape))
+        model.add(Activation("relu"))
+        nb_filters = 12
+        model.add(Convolution2D(nb_filters, (kernel_size[0], kernel_size[1]),
+                                padding='valid',
+                                input_shape=input_shape))
+        model.add(Activation("relu"))
+        nb_filters = 6
+        model.add(Convolution2D(nb_filters, (kernel_size[0], kernel_size[1]),
+                                padding='valid',
+                                input_shape=input_shape))
+        model.add(Activation("sigmoid"))
+
+
+        #dont change
+        model.add(MaxPooling2D(pool_size=pool_size))
+        # model.add(Dropout(0.5))
+        model.add(Flatten())
+        #-------------------
+
+        model.add(Dense(100))
+        model.add(Activation('relu'))
+
+        model.add(Dense(100))
+        model.add(Activation('relu'))
+
+        model.add(Dense(100))
+        model.add(Activation('relu'))
+
+        # model.add(Dropout(0.5))
+        #dont change ----------------------
+        model.add(Dense(nb_classes))
+        model.add(Activation('softmax'))
+        #----------------------------
+
+        model.compile(loss='binary_crossentropy',
+                      optimizer='adam',
+                      metrics=['accuracy'])
+        return model
