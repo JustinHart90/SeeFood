@@ -34,7 +34,7 @@ def main():
     random.shuffle(keylist)
 
     for y,key in enumerate(keylist):
-        if y == 200:
+        if y == 60:
             break
         cat = key.name.split('/')[0]
         print(cat)
@@ -44,16 +44,40 @@ def main():
             full_data.append(imgdata)
             cats.append(cat)
 
-            rot90 = rotate(img, 90, reshape=False)
-            full_data.append(rot90)
+            rot36 = rotate(imgdata, 36, reshape=False)
+            full_data.append(rot36)
             cats.append(cat)
 
-            rot180 = rotate(img, 180, reshape=False)
+            rot72 = rotate(imgdata, 72, reshape=False)
+            full_data.append(rot72)
+            cats.append(cat)
+
+            rot108 = rotate(imgdata, 108, reshape=False)
+            full_data.append(rot108)
+            cats.append(cat)
+
+            rot144 = rotate(imgdata, 144, reshape=False)
+            full_data.append(rot144)
+            cats.append(cat)
+
+            rot180 = rotate(imgdata, 180, reshape=False)
             full_data.append(rot180)
             cats.append(cat)
 
-            rot270 = rotate(img, 270, reshape=False)
-            full_data.append(rot270)
+            rot216 = rotate(imgdata, 216, reshape=False)
+            full_data.append(rot216)
+            cats.append(cat)
+
+            rot252 = rotate(imgdata, 252, reshape=False)
+            full_data.append(rot252)
+            cats.append(cat)
+
+            rot288 = rotate(imgdata, 288, reshape=False)
+            full_data.append(rot288)
+            cats.append(cat)
+
+            rot324 = rotate(imgdata, 324, reshape=False)
+            full_data.append(rot324)
             cats.append(cat)
 
     with open('../data/all_data.pkl', 'wb') as f:
@@ -76,52 +100,50 @@ def smash_one(name):
     cats = []
 
     for y,key in enumerate(keylist):
-        if y == 10:
+        if y == 50:
             break
         cat = key.name.split('/')[1]
         cat = cat.split(".")[0]
-        print(key)
+
         print(cat)
         contents = key.get_contents_to_filename('img/temp.jpg')
         imgdata = imread('img/temp.jpg')
         if imgdata.shape == (300, 300, 3):
             full_data.append(imgdata)
             cats.append(cat)
-            imsave('../static/images/im.jpg', imgdata)
+
             rot45 = rotate(imgdata, 45, reshape=False)
             full_data.append(rot45)
             cats.append(cat)
-            # imsave('../static/images/im2.jpg', rot45)
-            rot45 = rotate(imgdata, 90, reshape=False)
-            full_data.append(rot45)
+
+            rot90 = rotate(imgdata, 90, reshape=False)
+            full_data.append(rot90)
             cats.append(cat)
-            # imsave('../static/images/im3.jpg', rot45)
-            rot45 = rotate(imgdata, 135, reshape=False)
-            full_data.append(rot45)
+
+            rot135 = rotate(imgdata, 135, reshape=False)
+            full_data.append(rot135)
             cats.append(cat)
-            # imsave('../static/images/im4.jpg', rot45)
-            rot45 = rotate(imgdata, 180, reshape=False)
-            full_data.append(rot45)
+
+            rot180 = rotate(imgdata, 180, reshape=False)
+            full_data.append(rot180)
             cats.append(cat)
-            # imsave('../static/images/im5.jpg', rot45)
-            rot45 = rotate(imgdata, 225, reshape=False)
-            full_data.append(rot45)
+
+            rot225 = rotate(imgdata, 225, reshape=False)
+            full_data.append(rot225)
             cats.append(cat)
-            # imsave('../static/images/im6.jpg', rot45)
-            rot45 = rotate(imgdata, 270, reshape=False)
-            full_data.append(rot45)
-            cats.append(cat)
-            # imsave('../static/images/im7.jpg', rot45)
-            rot45 = rotate(imgdata, 315, reshape=False)
-            full_data.append(rot45)
+
+            rot270 = rotate(imgdata, 270, reshape=False)
+            full_data.append(rot270)
             cats.append(cat)
             # imsave('../static/images/im8.jpg', rot45)
-        # with open('../data/'+name+'.pkl', 'wb') as f:
-        #     pickle.dump(full_data, f)
-        # with open('../data/'+name+'_cat.pkl', 'wb') as f:
-        #     pickle.dump(cats, f)
+        with open('../data/'+name+'.pkl', 'wb') as f:
+            pickle.dump(full_data, f)
+        with open('../data/'+name+'_cat.pkl', 'wb') as f:
+            pickle.dump(cats, f)
 
 
 if __name__ == '__main__':
     # main()
-    smash_one('chicken')
+    names = ['fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak', 'burrito', 'enchilada', 'salmon', 'tacos']
+    for i in names:
+        smash_one(i)

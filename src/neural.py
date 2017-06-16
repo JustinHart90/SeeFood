@@ -7,6 +7,7 @@ from keras.layers.core import Dense, Dropout, Activation, Flatten
 from keras.optimizers import SGD
 from keras import backend as K
 
+
 import numpy as np
 import random
 import theano
@@ -322,7 +323,7 @@ class NNmaker():
         model.add(Convolution2D(nb_filters, (kernel_size[0], kernel_size[1]),
                                 padding='valid',
                                 input_shape=input_shape))
-        model.add(Activation("sigmoid"))
+        model.add(Activation("relu"))
 
 
         #dont change
@@ -345,8 +346,8 @@ class NNmaker():
         model.add(Dense(nb_classes))
         model.add(Activation('softmax'))
         #----------------------------
-
-        model.compile(loss='binary_crossentropy',
-                      optimizer='adam',
+        sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+        model.compile(loss='categorical_crossentropy',
+                      optimizer=sgd,
                       metrics=['accuracy'])
         return model

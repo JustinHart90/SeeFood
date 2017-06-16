@@ -21,7 +21,7 @@ def main():
 
     conn = boto.connect_s3(AWS_ACCESS_KEY_ID,
             AWS_SECRET_ACCESS_KEY)
-    nameList = ['fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak']
+    nameList = ['fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak', 'burrito', 'enchilada', 'salmon', 'tacos']
     for name in nameList:
         filepath = '../data/'+ name +'.pickle'
         d = pd.read_pickle("../data/"+name+".pickle")
