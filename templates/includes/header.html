@@ -26,7 +26,7 @@
 
     <!-- Custom Fonts -->
     <link href="{{url_for('static', filename='../static/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
 <!DOCTYPE html>
@@ -77,4 +77,39 @@
 
     <!-- ANIMATE -->
 		<link rel='stylesheet' href="{{url_for('static', filename='../static/css/animate.min.css')}}">
+
+
+  <style>
+      .btn-file {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-file input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 100%;
+      min-height: 100%;
+      font-size: 100px;
+      text-align: right;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      outline: none;
+      background: white;
+      cursor: inherit;
+      display: block;
+    }
+
+    #img-upload{
+      width: 100%px;
+
+    }
+    .vcenter {
+      float:none;
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:-4px;
+  }
+  </style>
+
 	</head>

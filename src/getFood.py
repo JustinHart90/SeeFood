@@ -25,10 +25,10 @@ def request():
     app = str(os.environ.get("EDAM_APP"))
     api = str(os.environ.get("EDAM_KEY"))
     #connect to mongo
-    uri = str(os.environ.get("MONGODB_URI"))
-    client = pymongo.MongoClient(uri)
-    db = client.get_default_database()
-    micro = db['micro']
+    uri = str(os.environ.get("MONGODB_URI"))#connect to your Mlab
+    client = pymongo.MongoClient(uri)# dont worry bout it
+    db = client.get_default_database()# dont worry bout it
+    micro = db['micro']# name the db of collections
     nameList = ['tacos']
     write_out = []
 

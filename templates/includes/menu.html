@@ -37,64 +37,70 @@
 
             <!-- MENU ITEM -->
             <li class="parent">
-              <a href="#"><div class="main-menu-title">HOME</div></a>
+              <a href="/"><div class="main-menu-title">HOME</div></a>
             </li>
             <li class="parent">
-              <a href="#"><div class="main-menu-title">UPLOAD</div></a>
+              <a href="/predict"><div class="main-menu-title">UPLOAD</div></a>
             </li>
             <li class="parent">
-              <a href="#"><div class="main-menu-title">EVOLUTION</div></a>
+              <a href="/evolve"><div class="main-menu-title">EVOLUTION</div></a>
             </li>
 
 
             <!-- MENU ITEM -->
             <li id="menu-contact-info-big" class="parent megamenu">
-              <a href="#"><div class="main-menu-title">CONTACT</div></a>
-              <ul class="sub">
-                <li class="clearfix" >
-                  <div class="menu-sub-container">
+                        <a href="#"><div class="main-menu-title">CONTACT</div><span class="open-sub"></span></a>
+                        <ul class="sub">
+                          <li class="clearfix">
+                            <div class="menu-sub-container">
 
-                    <div class="box col-md-4 menu-demo-info closed">
-                      <h5 class="title">CONTACT PAGES</h5>
-                      <ul>
-                      <li><a href="contact.html">Contact Version 1</a></li>
-                      <li><a href="contact2.html">Contact Version 2</a></li>
-                      </ul>
-                    </div>
+                              <div class="box col-md-3 menu-demo-info closed">
+                                <h5 class="title">Links<span class="open-sub"></span></h5>
+                                <ul>
+                                <li><a href="https://github.com/jmsulli6464">GitHub</a></li>
+                                <li><a href="http://johnsullivan.space/">Website</a></li>
+                                <li><a href="http://www.sullottadb.com/">Blog</a></li>
+                                <li><a href="http://www.linkedin.com/in/John-M-Sullivan">LinkedIn</a></li>
+                                </ul>
+                              </div>
 
-                    <div class="col-md-4 menu-contact-info">
-                      <ul class="contact-list">
-                        <li class="contact-loc clearfix">
-                          <div class="loc-icon-container">
-                            <span aria-hidden="true" class="icon_pin_alt main-menu-contact-icon"></span>
-                          </div>
-                          <div class="menu-contact-text-container">555 California str, Suite 100</div>
-                        </li>
-                        <li class="contact-phone clearfix">
-                          <div class="loc-icon-container">
-                            <span aria-hidden="true" class="icon_phone main-menu-contact-icon"></span>
-                          </div>
-                          <div class="menu-contact-text-container">1-32-312-22, 1-32-112-22</div>
-                        </li>
-                        <li class="contact-mail clearfix" >
-                          <div class="loc-icon-container">
-                            <span aria-hidden="true" class="icon_mail_alt main-menu-contact-icon"></span>
-                          </div>
-                          <div class="menu-contact-text-container">
-                            <a class="a-mail" href="mailto:info@haswell.com">info@haswell.com</a>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
+                              <div class="col-md-3 menu-contact-info">
+                                <ul class="contact-list">
+                                  <li class="contact-loc clearfix">
+                                    <div class="loc-icon-container">
+                                      <span aria-hidden="true" class="icon_pin_alt main-menu-contact-icon"></span>
+                                    </div>
+                                    <div class="menu-contact-text-container">Denver, CO</div>
+                                  </li>
+                                  <li class="contact-phone clearfix">
+                                    <div class="loc-icon-container">
+                                      <span aria-hidden="true" class="icon_phone main-menu-contact-icon"></span>
+                                    </div>
+                                    <div class="menu-contact-text-container">303-257-9338</div>
+                                  </li>
+                                  <li class="contact-mail clearfix">
+                                    <div class="loc-icon-container">
+                                      <span aria-hidden="true" class="icon_mail_alt main-menu-contact-icon"></span>
+                                    </div>
+                                    <div class="menu-contact-text-container">
+                                      <a class="a-mail" href="mailto:info@haswell.com">John@sullotta.com</a>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
 
-                    <div class="col-md-6 menu-map-container hide-max-960 ">
-                      <!-- Google Maps -->
+                              <div class="col-md-6 menu-map-container hide-max-960 ">
+                                <!-- Google Maps -->
+                                <div class="google-map-container">
+                                  <img src="{{url_for('static', filename='../static/images/map-line.png')}}" alt="alt">
+                                </div>
+                                <!-- Google Maps / End -->
+                              </div>
 
-                      <!-- Google Maps / End -->
-                    </div>
-
-                  </div>
-                </li>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
               </ul>
             </li>
 

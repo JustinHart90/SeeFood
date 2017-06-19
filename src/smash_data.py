@@ -100,7 +100,7 @@ def smash_one(name):
     cats = []
 
     for y,key in enumerate(keylist):
-        if y == 50:
+        if y == 30:
             break
         cat = key.name.split('/')[1]
         cat = cat.split(".")[0]
@@ -144,6 +144,6 @@ def smash_one(name):
 
 if __name__ == '__main__':
     # main()
-    names = ['fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak', 'burrito', 'enchilada', 'salmon', 'tacos']
+    names = ['bacon','fish']
     for i in names:
         smash_one(i)

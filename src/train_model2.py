@@ -180,6 +180,13 @@ def _image_generator(X_train, Y_train):
     train_datagen.fit(X_train, seed=seed)
     return train_datagen
 
+def resave():
+    names = ['fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak', 'burrito', 'enchilada', 'salmon', 'tacos']
+    for i in names:
+        print(i)
+        model = pickle.load( open( i+"_model.pkl", "rb" ) )
+        model.save(i+'_model.h5')
+
 def vgg16(name):
    # os.environ["THEANO_FLAGS"] = 'exception_verbosity=high, allow_gc=False, optimizer_including="local_ultra_fast_sigmoid", nvcc.fastmath=True, use_fast_math=True, optimizer=fast_compile, borrow=True'
     batch_size = 7
@@ -247,9 +254,9 @@ def vgg16(name):
 if __name__ == '__main__':
     sys.setrecursionlimit(100000)
     names = ['fish', 'bacon', 'hotdog', 'beef', 'chicken', 'steak', 'burrito', 'enchilada', 'salmon', 'tacos']
-    # for i in names:
-    #     print(i)
-    #     vgg16(name)
+    for i in names:
+        print(i)
+        vgg16(name)
     vgg19('main')
     #dance()
     # main()

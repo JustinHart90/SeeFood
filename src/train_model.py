@@ -80,13 +80,13 @@ def main():
 
 def dance():
     # os.environ["THEANO_FLAGS"] = ''
-    # X = pd.read_pickle("../data/tacos.pkl")
-    y = pd.read_pickle("../data/tacos_cat.pkl")
+    X = pd.read_pickle("../data/all_data.pkl")
+    y = pd.read_pickle("../data/cat.pkl")
     yc = preprocessing.LabelEncoder().fit_transform(y)
-    # print(len(y))
+    print(y)
     # print(len(X))
-    key2 = ['bacon' 'beef' 'burrito' 'chicken' 'enchilada' 'fish' 'hotdog' 'salmon'
- 'steak' 'tacos']
+    key2 = ['bacon', 'beef', 'burrito' ,'chicken', 'enchilada', 'fish' ,'hotdog', 'salmon'
+ 'steak', 'tacos']
     imgdata = imread('img/0.jpg')
     img = np.array([imgdata])
 
@@ -96,13 +96,14 @@ def dance():
     pre = np.argmax(preds)
     print(pre)
     print(key2[pre])
-    # for y, i in enumerate(X):
-    #     img = np.array([i])
-    #     img = img.astype('float32')
-    #     img /= 255
-    #     preds = model.predict(img)
-    #     print(y)
-    #     print(preds)
+    for y, i in enumerate(X):
+        img = np.array([i])
+        img = img.astype('float32')
+        img /= 255
+        preds = model.predict(img)
+        pre = np.argmax(preds)
+        print(preds)
+        print(key2[pre])
 
 def _image_generator(X_train, Y_train):
     seed = 1337
@@ -239,24 +240,28 @@ def vgg19(name):
 
 def get_keys():
     '''load data from pickled images'''
-    X = pd.read_pickle("../data/tacos.pkl")
-    # y = pd.read_pickle("../data/cat.pkl")
-    le = preprocessing.LabelEncoder()
-    yc = le.fit_transform(y)
-    clss = np.unique(yc)
-    key = le.inverse_transform([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-    key2 = ['bacon' 'beef' 'burrito' 'chicken' 'enchilada' 'fish' 'hotdog' 'salmon'
- 'steak' 'tacos']
-    print(key)
-    print(key[0])
+    names = ['bacon','fish']
+    for i in names:
+        print(i)
+        y = pd.read_pickle("../data/"+i+"_cat.pkl")
+        # print(y)
+
+        # y = pd.read_pickle("../data/cat.pkl")
+        le = preprocessing.LabelEncoder()
+        yc = le.fit_transform(y)
+        clss = np.unique(yc)
+        key = le.inverse_transform(clss)
+
+        print(key)
+
 
 
 
 
 
 if __name__ == '__main__':
-    # get_keys()
+    get_keys()
     # getdata()
     # vgg19('main')
-    dance()
+    #dance()
     # main()

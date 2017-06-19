@@ -1,0 +1,190 @@
+
+		{% include 'includes/header.html' %}
+    <!-- IE Warning CSS -->
+		<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="css/ie-warning.css" ><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="css/ie8-fix.css" ><![endif]-->
+
+    <!-- Magnific popup  in style.css	Owl Carousel Assets in style.css -->
+
+<!-- CSS end -->
+
+<!-- JS begin some js files in bottom of file-->
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    <!-- Modernizr -->
+    <!-- <script src="js/modernizr.js"></script> -->
+
+
+	<body>
+
+		<!-- LOADER -->
+		<div id="loader-overflow">
+      <div id="loader3">Please enable JS</div>
+    </div>
+
+		<div id="wrap" class="boxed ">
+			<div class="grey-bg"> <!-- Grey BG  -->
+
+				<!--[if lte IE 8]>
+				<div id="ie-container">
+					<div id="ie-cont-close">
+						<a href='#' onclick='javascript&#058;this.parentNode.parentNode.style.display="none"; return false;'><img src='images/ie-warn/ie-warning-close.jpg' style='border: none;' alt='Close'></a>
+					</div>
+					<div id="ie-cont-content" >
+						<div id="ie-cont-warning">
+							<img src='images/ie-warn/ie-warning.jpg' alt='Warning!'>
+						</div>
+						<div id="ie-cont-text" >
+							<div id="ie-text-bold">
+								You are using an outdated browser
+							</div>
+							<div id="ie-text">
+								For a better experience using this site, please upgrade to a modern web browser.
+							</div>
+						</div>
+						<div id="ie-cont-brows" >
+							<a href='http://www.firefox.com' target='_blank'><img src='images/ie-warn/ie-warning-firefox.jpg' alt='Download Firefox'></a>
+							<a href='http://www.opera.com/download/' target='_blank'><img src='images/ie-warn/ie-warning-opera.jpg' alt='Download Opera'></a>
+							<a href='http://www.apple.com/safari/download/' target='_blank'><img src='images/ie-warn/ie-warning-safari.jpg' alt='Download Safari'></a>
+							<a href='http://www.google.com/chrome' target='_blank'><img src='images/ie-warn/ie-warning-chrome.jpg' alt='Download Google Chrome'></a>
+						</div>
+					</div>
+				</div>
+				<![endif]-->
+
+
+
+					<!-- MAIN MENU CONTAINER -->
+
+          {% include 'includes/menu.html' %}
+					<!-- SEARCH READ DOCUMENTATION -->
+					<ul class="cd-header-buttons">
+						<li><a class="cd-search-trigger" href="#cd-search"><span></span></a></li>
+					</ul> <!-- cd-header-buttons -->
+					<div id="cd-search" class="cd-search">
+						<form class="form-search" id="searchForm" action="page-search-results.html" method="get">
+							<input type="text" value="" name="q" id="q" placeholder="Search...">
+						</form>
+					</div>
+
+				  </div>
+				  <!-- END header-wrapper -->
+
+				</header>
+
+        <!-- FLEX SLIDER -->
+        <div class="indent-header">
+
+        </div>
+
+
+				<div class="page-section grey-light-bg pt-80-b-50-cont">
+          <div class="container">
+            <div class="row">
+              <div class = "col-md-6">
+              <h2 class="section-title" > THE <span class="bold">RESULTS</span></h2>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- BLOG 1 -->
+
+        <div class="col-md-3" align="center">
+          <br />
+        <a href="/predict" class="btn btn-info" role="button">TRY ANOTHER</a>
+        </div>
+        <div class="col-md-6">
+          <h1> It looks like a {{cat}} to me.</h1>
+
+          <h3>The cloeset recipe I found is {{label}}</h2>
+
+          <h3> The calorie count is: {{'%0.2f' % cals}} </h3>
+
+
+  							<div class="tabs custom-tabs">
+  								<ul class="nav nav-tabs">
+  									<li class="active">
+  										<a href="#tab1" data-toggle="tab" aria-expanded="true">ACCORDION</a>
+  									</li>
+  									<li class="">
+  										<a href="#tab2" data-toggle="tab" aria-expanded="false">TABLE</a>
+  									</li>
+  								</ul>
+  								<div class="tab-content">
+  									<div id="tab1" class="tab-pane tab-content-container active">
+                      {% for key, value in th.items() %}
+                      {% if loop.first %}
+                      <dl class="accordion">
+                      {% endif %}
+                      <dt>
+                        <a href="#" class="active">{{key}}</a>
+                      </dt>
+                      <dd style="display: block;">
+                        <h3>{{ value["label"] }}:  <span style="color:#A3CEDC">{{'%0.2f' % value.quantity}} {{value.unit}} </span></h5>
+                      </dd>
+
+                      {% endfor %}
+                    </dl>
+
+
+  									</div>
+  									<div id="tab2" class="tab-pane tab-content-container">
+                      <table class="table table-striped mb-40">
+            					  <thead>
+            						<tr>
+            						  <th>LABEL</th>
+                          <th>QUANTITY</th>
+
+            						</tr>
+            					  </thead>
+
+                        <tbody>
+                          {% for key, value in th.items() %}
+            						<tr>
+            						  <td>{{ value["label"] }}</td>
+            						  <td>{{'%0.2f' % value.quantity}} {{value.unit}}</td>
+            						</tr>
+            						{% endfor %}
+            					  </tbody>
+            					</table>
+              									</div>
+              								</div>
+              							</div>
+              						</div>
+        <div class="page-section pt-110-b-30-cont">
+            <div class="container">
+                <div class="col-md-6 col-md-offset-3">
+
+
+
+
+
+
+
+
+
+
+            </form>
+          </div>
+        </div>
+
+
+
+        {% include 'includes/call.html' %}
+
+
+            </div>
+          </div>
+        </div>
+
+        {% include 'includes/footer.html' %}
+
+	</body>
+</html>

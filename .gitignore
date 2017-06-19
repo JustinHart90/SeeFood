@@ -1,3 +1,4 @@
 data
+models
 *.pkl
 *.h5
