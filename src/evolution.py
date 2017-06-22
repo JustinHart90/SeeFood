@@ -21,6 +21,7 @@ import pymongo
 import pickle
 
 def main():
+    '''Checking the import worked'''
     maker = NNmaker()
     model, DNA = maker.makeRanNN(100,10)
 
@@ -51,6 +52,7 @@ def get_data():
 
 
 def mixGenDNA(DNA_pool, X_train, y_train, X_test, y_test, classes, gen):
+    '''Takes in the  DNA pool and mixes them randomly amongst two partners '''
     #[name, test_acc, DNA]
     DNA_Pool = DNA_pool.copy()
     NewGenDNA = {}
@@ -84,6 +86,7 @@ def mixGenDNA(DNA_pool, X_train, y_train, X_test, y_test, classes, gen):
 
 
 def evolve():
+    '''The main function to run the evolution theory'''
     rng_seed = 20 # set random number generator seed
     X_train,X_test, y_train, y_test, classes = get_data()
 
@@ -108,6 +111,7 @@ def evolve():
 
         # print(NewGenDNA)
 def killOff(DNAPop, childs):
+    '''Removes the models that are not up to par'''
     pop = []
     for key in DNAPop.keys():
         pop.append([DNAPop[key][1], key])
@@ -127,6 +131,7 @@ def killOff(DNAPop, childs):
 
 
 def training_Time(model,DNA, X_train, y_train, X_test, y_test, name, gen, parent1, parent2):
+    '''Train the models and return the accuracy'''
     #[name, score[0],score[1], DNA2, name, gen]
 
     model.fit(X_train, y_train, batch_size=DNA['BS'], epochs=DNA['epochs'],
@@ -140,7 +145,7 @@ def training_Time(model,DNA, X_train, y_train, X_test, y_test, name, gen, parent
     return score
 
 def uploadModels(DNA, model, name, score1, score2, gen, parent1, parent2):
-
+        '''Upload the models to a mongo database'''
         uri = str(os.environ.get("MONGODB_URI_MODELS"))
         client = pymongo.MongoClient(uri)
         db = client.get_default_database()

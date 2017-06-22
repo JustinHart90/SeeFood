@@ -9,17 +9,7 @@ import pymongo
 
 
 def request():
-    # write_data = []
-    # for i in range(0,10):
-    #     api = str(os.environ.get("FOOD_API"))
-    #     page = '&page=' + str(i)
-    #     with urllib.request.urlopen('http://food2fork.com/api/search?key='+str(api)+str(page)) as url:
-    #         data = url.read()
-    #         fdata = json.loads(data)
-    #         recipes = fdata['recipes']
-    #         for i,x in enumerate(recipes):
-    #             write_data.append([recipes[i]['title'],recipes[i]['image_url']] )
-    #             print(write_data)
+    # The API keys
     #dict_keys(['uri', 'label', 'image', 'source', 'url', 'shareAs', 'yield', 'dietLabels', 'healthLabels',
     #'cautions', 'ingredientLines', 'ingredients', 'calories', 'totalWeight', 'totalNutrients', 'totalDaily', 'digest'])
     app = str(os.environ.get("EDAM_APP"))
@@ -31,7 +21,7 @@ def request():
     micro = db['micro']# name the db of collections
     nameList = ['tacos']
     write_out = []
-
+    #run the script for for the amount of keywords you want
     for name in nameList:
         for i in range(1,2):
             start = 1 + (100 * (i-1) )

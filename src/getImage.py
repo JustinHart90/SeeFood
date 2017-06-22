@@ -16,6 +16,7 @@ import os
 
 
 def main():
+    '''Run throught the mongo database to scrape images then add them to s3 bucket'''
     AWS_ACCESS_KEY_ID = str(os.environ.get("AWS_ACCESS_KEY"))
     AWS_SECRET_ACCESS_KEY = str(os.environ.get("AWS_SECRET"))
 

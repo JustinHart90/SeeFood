@@ -12,6 +12,7 @@ import numpy as np
 import random
 import theano
 
+# Original Neural Network Code adapted from Frank Burkholder at Galvanize
 
 class NNmaker():
 
@@ -19,19 +20,15 @@ class NNmaker():
         self.PopDNA = []
         # DNA Straind {NumN : number of neurons, NumL : number of layers, LI: layer inits,   }
 
-    def reproduce_NN(self,DNA,inputs, classes):
-        ''' defines multi-layer-perceptron neural network '''
-        # available activation functions at:
-        # https://keras.io/activations/
-        # https://en.wikipedia.org/wiki/Activation_function
-        # options: 'linear', 'sigmoid', 'tanh', 'relu', 'softplus', 'softsign'
-        # there are other ways to initialize the weights besides 'uniform', too
+    def reproduce_CNN(self,DNA,inputs, classes):
 
-        model = Sequential() # sequence of layers
-        num_neurons_in_layer = 500 # number of neurons in a layer
-        num_inputs = X_train.shape[1] # number of features (784)
-        num_classes = y_train_ohe.shape[1]  # number of classes, 0-9
-         # only 12 neurons in this layer!
+        ''' Makes a multi-layer-perceptron neural network depending on a DNA strand'''
+
+        model = Sequential()
+        num_neurons_in_layer = 500
+        num_inputs = X_train.shape[1]
+        num_classes = y_train_ohe.shape[1]
+
 
         model.add(Dense(input_dim=(num_inputs * 2),
                          output_dim=num_neurons_in_layer,
@@ -43,13 +40,14 @@ class NNmaker():
         return model
 
     def makeRanMLP(self, inputs, classes):
+        ''' Function to make a random multi-layer-perceptron '''
         DNA = {}
         actList = ['linear', 'sigmoid', 'tanh', 'relu', 'softplus', 'softsign']
-        model = Sequential() # sequence of layers
-        NumN = random.randint(0,500) # number of neurons in a layer
+        model = Sequential()
+        NumN = random.randint(0,500)
         DNA['NumN'] = NumN
-        num_inputs = inputs # number of features (784)
-        num_classes = classes  # number of classes, 0-9
+        num_inputs = inputs
+        num_classes = classes
         print(num_inputs)
         print(num_classes)
          # only 12 neurons in this layer!
@@ -99,7 +97,7 @@ class NNmaker():
 
 
     def makerandom_CNN(self, X_train, X_test, classes):
-
+        '''Function to make a random Convolution Neural Net'''
         #dont change
         img_rows, img_cols = 300, 300
         nb_classes = classes
@@ -183,6 +181,7 @@ class NNmaker():
 
 
     def reporduce_CNN(self, X_train, X_test, classes, DNA):
+        '''Function to make a CNN from a DNA strand'''
         #dont change
         #{'BS': 4840, 'NumFileter': 14, 'PoolSize': (4, 4), 'KS': (4, 4), 'C2DLayers': 1, 'c2d_Activ': ['relu'], 'DenseLayers': 8, 'Dense_Activ': ['sigmoid', 'sigmoid', 'softsign', 'linear', 'softsign', 'tanh', 'linear', 'softplus'], 'Dense_Nur': [26, 304, 467, 776, 817, 359, 369, 641], 'Drop': 0.3098848045887589}#
             #dont change
@@ -280,6 +279,7 @@ class NNmaker():
             return model
 
     def handmade(self, X_train, X_test, classes):
+        ''' Hand made CNN'''
         img_rows, img_cols = 300, 300
         nb_classes = classes
         #-------------

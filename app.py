@@ -14,110 +14,182 @@ import pymongo
 from datetime import datetime
 import io
 from scipy import misc
+import logging
 
-from keras.models import load_model
+from keras import models
 from scipy.misc import imread, imsave, imresize
 from PIL import Image
 
 
+global main_model
+global bacon_model
+global beef_model
+global burrito_model
+global chicken_model
+global enchilada_model
+global fish_model
+global hotdog_model
+global salmon_model
+global steak_model
+global tacos_model
 
 
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'PNG', 'JPG'])
 app = Flask(__name__)
 app.config['MAX_CONTENT_PATH'] = 4000000
-global main_model
-global bacon_model
-global burrito_model
-global enchilada_model
-global hotdog_model
-global salmon_model
-global tacos_model
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
+
+# main_model = models.load_model('models/temp.h5')
+
+
+
+@app.before_first_request
+def _run_on_start():
+    ''' A function to load the models when the web app is first booted up'''
+    #Main model
+    global main_model
+    main_model = models.load_model('models/main_model.h5')
+    # 10 category models
+    global bacon_model
+    bacon_model = models.load_model('models/bacon_model.h5')
+    global beef_model
+    beef_model = models.load_model('models/beef_modelV2.h5')
+    global burrito_model
+    burrito_model = models.load_model('models/burrito_modelV2.h5')
+    global chicken_model
+    chicken_model = models.load_model('models/chicken_modelV2.h5')
+    global enchilada_model
+    enchilada_model = models.load_model('models/enchilada_model.h5')
+    global fish_model
+    fish_model = models.load_model('models/fish_modelV2.h5')
+    global hotdog_model
+    hotdog_model = models.load_model('models/hotdog_modelV2.h5')
+    global salmon_model
+    salmon_model = models.load_model('models/salmon_model.h5')
+    global steak_model
+    steak_model = models.load_model('models/steak_model.h5')
+    global tacos_model
+    tacos_model = models.load_model('models/tacos_modelV2.h5')
+
 
 
 def choose2nd(name, img):
+    '''
+    INPUT: name: string/ name of the category
+           img: image in numpy format
+    OUTPUT: int
+
+    Takes the name of the category and runs the image through that model and returns its key.
+    '''
     #['bacon', 'beef', 'burrito', 'chicken', 'enchilada', 'fish',
     #'hotdog', 'salmon', 'steak', 'tacos']
     if name == 'bacon':
         keys = ['1', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2', '20', '21', '22',
  '23', '24', '25', '26', '27', '28', '29', '3', '30', '31', '32', '33', '34', '35', '36']
-        global bacon_model
+        bacon_model = models.load_model('models/bacon_model.h5')
         preds = bacon_model.predict(img).flatten()
+        del bacon_model
         pre = np.argmax(preds)
         return keys[pre]
     elif name == 'beef':
         keys = ['1', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2', '20', '21', '22',
  '23', '24', '25', '26', '27', '28', '29', '3', '30', '31', '32', '33', '34', '35', '36']
-        global beef_model
+        beef_model = models.load_model('models/beef_modelV2.h5')
         preds = beef_model.predict(img).flatten()
+        del beef_model
         pre = np.argmax(preds)
         return keys[pre]
     elif name == 'burrito':
         keys = ['1', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2' ,'20', '21', '22',
  '23', '24', '25', '26', '27', '28', '29', '3', '30', '31', '32', '33', '34', '35', '36']
-        global burrito_model
+        burrito_model = models.load_model('models/burrito_modelV2.h5')
         preds = burrito_model.predict(img).flatten()
+        del burrito_model
         pre = np.argmax(preds)
         return keys[pre]
     elif name == 'chicken':
         keys = ['1', '10' ,'11', '12', '13', '14', '15', '16', '17', '18', '19', '2', '20', '21', '22',
  '23', '24', '25', '26', '27', '28', '29', '3', '30', '31', '32', '33', '34', '35', '36']
-        global chicken_model
+        chicken_model = models.load_model('models/chicken_modelV2.h5')
         preds = chicken_model.predict(img).flatten()
+        del chicken_model
         pre = np.argmax(preds)
         return keys[pre]
     elif name == 'enchilada':
         keys = ['1', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2', '20', '21', '22',
  '23', '24', '25', '26', '27', '28', '29', '3', '30', '31', '32', '33', '34', '35', '36']
-        global enchilada_model
+        enchilada_model = models.load_model('models/enchilada_model.h5')
         preds = enchilada_model.predict(img).flatten()
+        del enchilada_model
         pre = np.argmax(preds)
         return keys[pre]
     elif name == 'fish':
         ['1', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2' ,'20' ,'21', '22',
  '23', '24', '25', '26', '27', '28', '29' ,'3', '30', '31', '32', '33', '34', '35', '36']
-        global fish_model
+        fish_model = models.load_model('models/fish_modelV2.h5')
         preds = fish_model.predict(img).flatten()
+        del fish_model
         pre = np.argmax(preds)
         return keys[pre]
     elif name == 'hotdog':
         keys = ['1', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2', '20', '21', '22',
  '23', '24', '25', '26', '27', '28' ,'29', '3' ,'30', '31', '32', '33', '34', '35', '36']
-        global hotdog_model
+        hotdog_model = models.load_model('models/hotdog_modelV2.h5')
         preds = hotdog_model.predict(img).flatten()
+        del hotdog_model
         pre = np.argmax(preds)
         return keys[pre]
     elif name == 'salmon':
         keys = ['1', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2', '20', '21', '22',
  '23', '24', '25', '26', '27', '28', '29', '3', '30', '31', '32', '33', '34', '35', '36']
-        global salmon_model
+        salmon_model = models.load_model('models/salmon_model.h5')
         preds = salmon_model.predict(img).flatten()
+        del salmon_model
         pre = np.argmax(preds)
         return keys[pre]
     elif name == 'steak':
         keys = ['1', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2', '20', '21', '22',
  '23', '24', '25', '26', '27', '28', '29', '3', '30', '31', '32', '33', '34', '35', '36']
-        global steak_model
+        steak_model = models.load_model('models/steak_model.h5')
         preds = steak_model.predict(img).flatten()
+        del steak_model
         pre = np.argmax(preds)
         return keys[pre]
     elif name == 'tacos':
         keys = ['0', '1', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2', '20', '21',
  '22', '23', '24', '25', '26', '27', '28', '29', '3', '30', '31', '32', '33', '34', '35']
-        global tacos_model
+        tacos_model = models.load_model('models/tacos_modelV2.h5')
         preds = tacos_model.predict(img).flatten()
+        del tacos_model
         pre = np.argmax(preds)
         return keys[pre]
 
 def choose1st(im):
+    '''
+    INPUT: im: image in numpy format
+    OUTPUT: string (model prediction)
+
+    Makes the main_model predict on the image and return its corresponding value.
+    '''
+
+
     keys = ['bacon', 'beef', 'burrito', 'chicken', 'enchilada', 'fish',
     'hotdog', 'salmon', 'steak', 'tacos']
     global main_model
     preds = main_model.predict(im).flatten()
+    print('\n\n\n\n\n\n\n\n\n\n')
     pre = np.argmax(preds)
     return keys[pre]
 
 def processPhoto(im):
+    '''
+    INPUT: img: image in numpy format
+    OUTPUT: numpy array
+
+    Takes an image and processes if for model consumption
+    '''
     half_the_width = im.size[0] / 2
     half_the_height = im.size[1] / 2
     img4 = im.crop(
@@ -135,24 +207,8 @@ def processPhoto(im):
     imgresized /= 255
     return imgresized
 
-@app.before_first_request
-def _run_on_start():
-    print('hello')
-    # global main_model
-    # main_model = load_model('models/main_model.h5')
-    # global bacon_model
-    # bacon_model = load_model('models/bacon_model.h5')
-    # global burrito_model
-    # burrito_model = load_model('models/burrito_modelV2.h5')
-    # global enchilada_model
-    # enchilada_model = load_model('models/enchilada_model.h5')
-    # global hotdog_model
-    # hotdog_model = load_model('models/hotdog_modelV2.h5')
-    # global salmon_model
-    # salmon_model = load_model('models/salmon_model.h5')
-    # global tacos_model
-    # tacos_model = load_model('models/tacos_modelV2.h5')
 
+# Check if file is allowed
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -161,6 +217,7 @@ def allowed_file(filename):
 # index page
 @app.route('/')
 def index():
+
 
     return render_template('index.html')
 
@@ -173,7 +230,7 @@ def predict():
 
     return render_template('predict.html')
 
-
+#page for results
 @app.route('/results', methods = ["GET", "POST"])
 def results():
     if request.method == 'POST':
@@ -190,8 +247,9 @@ def results():
             file.save('static/images/temp.jpg')
             im = Image.open('static/images/temp.jpg')
             im = processPhoto(im)
+
             name = choose1st(im)
-            label = int(choose2nd(name, im))
+            label = 0# int(choose2nd(name, im))
             print(label)
 
             uri = str(os.environ.get("MONGODB_URI"))
@@ -252,14 +310,6 @@ def api():
             imgresized = np.reshape(imgresized, (1,  300, 300, 3))
             print((imgresized))
 
-            # except Exception as e:
-            #     return render_template('api_error.html', error = 'There was trouble with the image' )
-            # model = pickle.load( open( "model.pkl", "rb" ) )
-            # prdiction = model.predict(imgresized)
-
-
-
-
 
             # connect to mongo DB
             uri = str(os.environ.get("MONGODB_URI"))
@@ -288,10 +338,61 @@ def api():
     else:
         return render_template('api_error.html' )
 
+#api request page version 2
+@app.route('/apiV2', methods = ["GET", "POST"])
+def apiV2():
+
+    if request.method == 'POST':
+        api_key = request.form.get('key')
+        print(api_key)
+        if api_key == 89477 or api_key == '89477':
+            if 'file' not in request.files:
+                message = 'Invalid Request File Not Found'
+                return render_template('api_error.html' )
+            file = request.files['file']
+            # if user does not select file, browser also
+            # submit a empty part without filename
+            if file.filename == '':
+                message = 'File Not Found'
+                return render_template('api_error.html' )
+            if file and allowed_file(file.filename):
+                file.save('static/images/temp.jpg')
+                im = Image.open('static/images/temp.jpg')
+                im = processPhoto(im)
+                name = choose1st(im)
+                label = int(choose2nd(name, im))
+                print(label)
+
+                uri = str(os.environ.get("MONGODB_URI"))
+                client = pymongo.MongoClient(uri)
+                db = client.get_default_database()
+                micro = db['micro']
+
+                #make Query with prediction
+                cursor = micro.find_one( {"$and":[ {"key":label}, {"cat":{"$regex": str(name)}}] })
+                cat = cursor['cat']
+                label = cursor['label']
+                cals = cursor['calories']
+                tn = cursor['totalNutrients']
+                response = {'cat': cat, 'name':name, 'calories' : cals, 'totalNutrients': tn}
+                x = json.dumps(response, sort_keys=True, indent=4)
+                return render_template('api.html', data=x )
+            else:
+                error = 'File not allowed'
+                return render_template('api_error.html' )
+        else:
+            error = 'Key Not Found'
+            return render_template('api_error.html', error = error )
+    else:
+        error = 'No Post method detected'
+        return render_template('api_error.html', error = error )
+
 
 
 
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8105, debug=True)
+
+    #run the app
+    app.run(host='0.0.0.0', port=1111, debug=True)

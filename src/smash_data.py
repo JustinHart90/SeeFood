@@ -20,6 +20,8 @@ import random
 
 
 def main():
+    '''Function to pull AWS images and convert them into numpy arrays for models
+    OUTPUT: pickel file of all images'''
     AWS_ACCESS_KEY_ID = str(os.environ.get("AWS_ACCESS_KEY"))
     AWS_SECRET_ACCESS_KEY = str(os.environ.get("AWS_SECRET"))
     conn = boto.connect_s3(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
@@ -86,6 +88,9 @@ def main():
         pickle.dump(cats, f)
 
 def smash_one(name):
+    '''Function to pull AWS images of a given category and convert them into numpy arrays for models
+    INPUT: name of category (string)
+    OUTPUT: pickel file of images'''
     AWS_ACCESS_KEY_ID = str(os.environ.get("AWS_ACCESS_KEY"))
     AWS_SECRET_ACCESS_KEY = str(os.environ.get("AWS_SECRET"))
     conn = boto.connect_s3(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)

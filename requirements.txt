@@ -21,3 +21,6 @@ s3transfer==0.1.10
 six==1.10.0
 Werkzeug==0.12.2
 Pillow==4.1.0
+tensorflow==1.1.0
+boto==2.46.1
+h5py==2.7.0
